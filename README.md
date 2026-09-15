@@ -56,14 +56,14 @@ Bắt đầu từ “Mô tả tóm tắt”, chờ tôi chốt từng phần.
 ## Tài liệu trong repo
 
 - [Hướng dẫn sử dụng](HUONG-DAN-SU-DUNG.md)
-- [Báo cáo audit và phát hành](AUDIT-VA-PHAT-HANH.md)
+- [Lịch sử thay đổi](CHANGELOG.md)
 - [Demo offline](demo/XEM-DEMO.html)
 - `chat/` — bản gộp để dùng ở nền tảng không nạp thư mục skill.
 - `skills/` — bản cài chính thức.
 
 ## Phiên bản
 
-Phiên bản hiện tại: **v1.1.2**. Bản v1.1.1 được giữ riêng tại máy phát hành để đối chiếu; khi nâng cấp, không cài song song hai phiên bản cùng tên trong một môi trường.
+Phiên bản hiện tại: **v1.1.2**. Khi nâng cấp, không cài song song hai phiên bản cùng tên trong một môi trường.
 
 ## Phạm vi kiểm chứng
 
