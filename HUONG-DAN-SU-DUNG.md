@@ -90,4 +90,4 @@ Khi BA sửa một lỗi, trước hết sửa output. Nếu cùng lỗi lặp l
 - **Demo:** dùng [nguồn một màn hình](demo/01-INPUT.md), chưa gửi đáp án vào phiên tạo mới. [Trang xem demo](demo/XEM-DEMO.html) là bài tham khảo offline, không chạy AI; [đáp án và ca thử](demo/04-DAP-AN-VA-CA-THU.md) dành cho người hướng dẫn.
 - **Chia sẻ 40 phút:** vấn đề thực tế 4 phút → cách nạp 5 → demo/review 12 → BA thử và kiểm chéo 10 → đối chiếu 6 → chọn việc thật/hỏi đáp 3. Bản 30 phút rút còn 3/4/9/8/4/2; bản 45 phút thêm 5 phút thực hành. Đây là mốc dự kiến, chưa đo qua diễn tập.
 - **Đánh giá:** nếu so trước/sau, giữ cùng nguồn, câu giao việc và cấu hình; lưu cả hai output, không chọn riêng lần trước tệ nhất. Cho BA kiểm chéo bằng Q1–Q4. Demo giả lập chưa thay cho một việc thật sau buổi.
-- **Trong ZIP:** `skills/` là bản cài, `chat/` là bản gộp, `demo/` là vật liệu luyện tập, [báo cáo phát hành](AUDIT-VA-PHAT-HANH.md) ghi thay đổi và mức kiểm chứng. Không cần đọc hết các thư mục để bắt đầu.
+- **Trong ZIP:** `skills/` là bản cài, `chat/` là bản gộp, `demo/` là vật liệu luyện tập. Không cần đọc hết các thư mục để bắt đầu.
