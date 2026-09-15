@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>BA Advisor v1.1 — Demo Tạo vùng</title>
+<style>
+.layout>div{min-width:0}
+:root{--ink:#163044;--muted:#546a79;--line:#dce5e8;--teal:#087f8c;--paper:#fff;--bg:#f3f6f5;--orange:#b55a0a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}a{color:#087985}header,main,footer{max-width:1280px;margin:auto;padding:24px 32px}header{padding-top:36px}header .brand{letter-spacing:.14em;color:var(--teal);font-size:13px;font-weight:750}h1{font-size:36px;line-height:1.2;letter-spacing:-.035em;margin:12px 0}header p{margin:8px 0;color:var(--muted);max-width:920px}.badge{display:inline-block;font-size:12px;border:1px solid #c0d5d6;border-radius:20px;padding:3px 12px;color:var(--teal);margin-top:10px}.notice{font-size:14px;color:#854800;background:#fff3dd;border-left:4px solid #dea84f;padding:12px 16px;border-radius:6px;margin:20px 0}nav{display:flex;gap:8px;flex-wrap:wrap}button{font:inherit;cursor:pointer}nav button{padding:10px 17px;border:1px solid #cfdddd;border-radius:10px;color:var(--ink);background:white;font-weight:650}nav button[aria-selected=true]{color:white;background:var(--ink);border-color:var(--ink)}button:focus-visible,a:focus-visible{outline:3px solid #e19425;outline-offset:3px}main{padding-top:0}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px}.panel,aside{background:white;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 6px 20px #17374806}.panel[hidden]{display:none}.panel h1{font-size:27px}.panel h2{font-size:21px;border-top:1px solid var(--line);padding-top:20px;margin-top:26px}.panel h3{font-size:17px}.panel p,.panel li{font-size:15px}.panel p:first-child{margin-top:0}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:14px 0}table{border-collapse:collapse;font-size:13px;width:100%;min-width:540px}th,td{padding:10px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top;text-align:left}th{background:#edf4f4;white-space:normal}tr:last-child td{border-bottom:0}pre{overflow-x:auto;background:#eff4f5;padding:16px;border-radius:8px;font-size:12px;line-height:1.4}code{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.9em}aside{align-self:start;position:sticky;top:20px}aside h2{font-size:17px;margin:0 0 12px}.crumb{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:14px}.mock{border:1px solid #cfdde1;border-radius:10px;padding:16px;background:#fafdfd}.mock h3{margin:0 0 14px;font-size:15px}.mock label{display:block;font-size:12px;margin-top:10px;font-weight:650}.mock input,.mock select{width:100%;padding:9px;border:1px solid #c8d8de;border-radius:5px;margin-top:4px;font:14px system-ui;background:white;color:#667b85}.fake-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}.fake-actions span{border:1px solid #c8d8de;border-radius:5px;padding:4px 15px;font-size:12px}.fake-actions span:last-child{background:var(--teal);color:white;border-color:var(--teal)}.small{font-size:12px!important;color:var(--muted)}.rubric{margin-top:25px}.rubric div{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding:9px 0;font-size:13px}.rubric b{color:var(--teal)}footer{font-size:13px;color:var(--muted)}.review-warning{background:#fff3dd;padding:10px;border-radius:8px;font-size:14px}details summary{cursor:pointer;font-weight:700;color:var(--teal)}@media(max-width:900px){.layout{grid-template-columns:1fr}aside{position:static;grid-row:1}header,main,footer{padding-left:16px;padding-right:16px}h1{font-size:29px}.panel{padding:18px}}@media print{nav,aside,header .notice,footer{display:none}.layout{display:block}.panel{border:0;box-shadow:none}header{padding:0}.panel[hidden]{display:none}table{font-size:10px}pre{font-size:10px}}
+</style></head><body>
+<header><div class="brand">BA ADVISOR / TEAM PILOT v1.1</div><h1>Một màn hình. Cùng một cách kiểm.</h1><p>Đọc nguồn → nhận diện điều AI có thể suy diễn → đối chiếu đặc tả → kiểm chéo Q1–Q4.</p><span class="badge">Offline · Dữ liệu giả lập · Không gọi AI</span><div class="notice">Bản lỗi là bài tập được tạo có chủ đích; bản tham khảo do biên soạn. Đây không phải phép đo trước/sau hoặc bằng chứng skill đã tăng chất lượng.</div><nav role="tablist" aria-label="Các phần demo"><button id="tab-source" type="button" role="tab" aria-controls="source" aria-selected="true" data-tab="source">Nguồn đầu vào</button><button id="tab-exercise" type="button" role="tab" aria-controls="exercise" aria-selected="false" data-tab="exercise">Bài tập tìm lỗi</button><button id="tab-reference" type="button" role="tab" aria-controls="reference" aria-selected="false" data-tab="reference">Đặc tả tham khảo</button><button id="tab-review" type="button" role="tab" aria-controls="review" aria-selected="false" data-tab="review">Cách kiểm chéo</button></nav></header>
+<main><div class="layout"><div><section class="panel" id="source" role="tabpanel" aria-labelledby="tab-source" ><h1>SRC-W1 — Màn hình Tạo vùng</h1>
+<p>Dữ liệu giả lập cho buổi chia sẻ BA, phiên bản 1.0, ngày 12/09/2026; không phải nghiệp vụ dự án thật hoặc mẫu bắt buộc của VNPT. Các mục dưới là nguồn duy nhất của ca demo. BA tham gia đóng vai người rà soát, không có phê duyệt tổ chức thật.</p>
+<h2>1. Mục tiêu và phạm vi</h2>
+<p>Cán bộ Quản trị dữ liệu tạo một vùng trong danh mục để sử dụng về sau. Chỉ đặc tả màn hình UI-02 — Tạo vùng; không cần setup Project Context. UI-01 — Danh mục vùng chỉ là điểm vào/ra, không đặc tả toàn màn hình danh sách. Không có polygon, import, sửa/xóa, tích hợp API hay job nền trong demo. Chưa có UX/Figma; được dùng mockup Markdown đề xuất.</p>
+<p>Điểm vào: Dữ liệu → Danh mục vùng → Tạo mới. UI-02 có Mã vùng, Tên vùng, Loại vùng; hai nút Lưu, Hủy. Không có field Trạng thái. Chưa chốt URL hoặc cơ chế đăng nhập; không tự thêm.</p>
+<h2>2. Trường và validation</h2>
+<table>
+<thead>
+<tr>
+<th>Trường</th>
+<th>Quy định</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mã vùng</td>
+<td>Textbox, bắt buộc, 2–10 ký tự A–Z hoặc 0–9, không mặc định. Không trim, không đổi hoa/thường. Duy nhất toàn danh mục, kể cả khác Loại vùng</td>
+</tr>
+<tr>
+<td>Tên vùng</td>
+<td>Textbox, bắt buộc, 1–100 ký tự, không mặc định, không trim. Rỗng hoặc toàn khoảng trắng không hợp lệ</td>
+</tr>
+<tr>
+<td>Loại vùng</td>
+<td>Dropdown, bắt buộc chọn Hành chính hoặc Chuyên đề, không mặc định, không nhận ngoài danh mục. Độ dài: N/A vì không nhập text tự do, chưa đặc tả độ dài CSDL</td>
+</tr>
+</tbody></table>
+<p>Kiểm tất cả trường khi nhấn Lưu; nhiều trường lỗi thì hiển thị từng lỗi cùng lúc tại trường liên quan. Giữ nguyên dữ liệu và UI-02, không tạo bản ghi nếu có lỗi.</p>
+<ul>
+<li>Mã rỗng/sai độ dài/sai ký tự: “Mã vùng gồm 2–10 chữ in hoa hoặc chữ số”.</li>
+<li>Mã trùng: “Mã vùng đã tồn tại”.</li>
+<li>Tên không hợp lệ: “Tên vùng phải có từ 1 đến 100 ký tự và không chỉ gồm khoảng trắng”.</li>
+<li>Loại chưa chọn/ngoài danh mục: “Vui lòng chọn loại vùng hợp lệ”.</li>
+</ul>
+<h2>3. Thao tác và kết quả</h2>
+<p>Lưu hợp lệ: tạo đúng một bản ghi chứa ba giá trị; về UI-01, thấy bản ghi mới và thông báo “Đã tạo vùng”. Hủy: về UI-01, không tạo bản ghi, không hỏi xác nhận. Không có bước duyệt bản ghi.</p>
+<p>Đã có Mã AB12, Loại Hành chính trong dữ liệu giả lập. Tạo AB12 loại Chuyên đề vẫn bị lỗi trùng. Đây là điểm dễ bỏ sót, phải thể hiện trong đặc tả dù không có BR-ID.</p>
+<h2>4. Chưa chốt</h2>
+<p>Bố cục ảnh/mockup, URL, vị trí lỗi chính xác (trên/dưới trường), xử lý mất kết nối/ghi đồng thời và SLA chưa được quyết định. Ghi rõ giới hạn; bản demo không phải đặc tả sẵn sàng triển khai ngoài phạm vi giả lập.</p>
+</section><section class="panel" id="exercise" role="tabpanel" aria-labelledby="tab-exercise" hidden><h1>Bài tập phát hiện lỗi</h1>
+<p><strong>BẢN LỖI CÓ CHỦ ĐÍCH — chỉ để luyện kiểm Q1–Q4.</strong> Không phải output thật của một model không dùng skill; không dùng để tuyên bố skill cải thiện chất lượng hay hiệu suất. Đối chiếu với SRC-W1 trong 01-INPUT.md, không dùng bài này làm nguồn nghiệp vụ.</p>
+<h2>Trích đoạn cần review</h2>
+<ol>
+<li>Mã vùng được tự đổi thành chữ in hoa và chỉ cần duy nhất trong cùng Loại vùng.</li>
+<li>Loại vùng mặc định Hành chính; có thêm trường Trạng thái mặc định Hoạt động.</li>
+<li>Tên vùng tối đa 100 ký tự trong bảng trường; kịch bản Lưu chấp nhận tên có 150 ký tự.</li>
+<li>Lưu thành công: hệ thống xử lý và thông báo phù hợp. Hủy: hệ thống xử lý phù hợp. Không nêu lỗi theo trường hoặc kết quả khi hủy.</li>
+<li>UI tuân thủ Figma đã duyệt; đường dẫn /regions/create. SLA tối đa 2 giây.</li>
+</ol>
+<p>Yêu cầu: trả Q1–Q4, vị trí lỗi, căn cứ SRC-W1 và ảnh hưởng tới Dev/Tester; không sửa file và không dùng từ “đạt” nếu chưa kiểm nguồn.</p>
+</section><section class="panel" id="reference" role="tabpanel" aria-labelledby="tab-reference" hidden><h1>Đặc tả tham khảo — UI-02 Tạo vùng</h1>
+<p>Phiên bản 0.1 · DRAFT · Nguồn SRC-W1: <a href="#source">01-INPUT.md</a>. Đây là mẫu biên soạn để thảo luận Q1–Q4, không phải kết quả một phép thử độc lập hoặc bản nghiệp vụ đã duyệt. Phạm vi chỉ UI-02; UI-01 là điểm vào/ra. OQ về lỗi hệ thống cần chốt trước áp dụng thật.</p>
+<h2>A. Mô tả tóm tắt</h2>
+<table>
+<thead>
+<tr>
+<th>Nội dung</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mục đích</td>
+<td>Cán bộ Quản trị dữ liệu tạo thông tin một vùng để dùng về sau</td>
+</tr>
+<tr>
+<td>Vai trò</td>
+<td>Quản trị dữ liệu; có thao tác tạo theo SRC-W1 §1</td>
+</tr>
+<tr>
+<td>Điểm vào</td>
+<td>Dữ liệu → Danh mục vùng → Tạo mới</td>
+</tr>
+<tr>
+<td>Điều kiện bắt đầu</td>
+<td>Người dùng đã vào UI-02 từ UI-01; danh mục hiện có được dùng kiểm trùng, không tự xác định cơ chế truy cập</td>
+</tr>
+<tr>
+<td>Kết quả</td>
+<td>Khi lưu hợp lệ tạo một bản ghi, về UI-01 và hiện “Đã tạo vùng”; khi hủy không tạo bản ghi</td>
+</tr>
+<tr>
+<td>Nguồn</td>
+<td>SRC-W1 §1–3; giới hạn ở §4</td>
+</tr>
+</tbody></table>
+<h2>B. Yêu cầu giao diện</h2>
+<h3>UI-02 — Tạo vùng</h3>
+<pre><code class="language-text">┌───────────────────────────────────────────────┐
+│ Dữ liệu &gt; Danh mục vùng &gt; Tạo mới              │
+│ TẠO VÙNG                                      │
+│                                               │
+│ Mã vùng *     [____________________________]  │
+│ Tên vùng *    [____________________________]  │
+│ Loại vùng *   [Chọn loại vùng             ▾]  │
+│                                               │
+│                         [ Hủy ]  [ Lưu ]      │
+└───────────────────────────────────────────────┘
+</code></pre>
+<p>Hình UI-02: mockup Markdown <strong>ĐỀ XUẤT — CHƯA XÁC NHẬN</strong>, bố cục OQ-01. Ba trường và hai nút từ SRC-W1 §1–3; dấu * minh họa trường bắt buộc, vị trí bố cục chưa chốt. “Chọn loại vùng” là placeholder đề xuất, không phải giá trị mặc định hay lựa chọn thứ ba. Không có ảnh UX/Figma trong nguồn.</p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Vị trí trên hình</th>
+<th>Chức năng</th>
+<th>Điều kiện/trạng thái</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Đường dẫn</td>
+<td>Đầu hình</td>
+<td>Thể hiện điểm vào nghiệp vụ</td>
+<td>Nhãn menu theo nguồn; bố trí chỉ đề xuất, không suy ra có thể bấm</td>
+</tr>
+<tr>
+<td>Ba trường</td>
+<td>Giữa hình</td>
+<td>Nhập/chọn giá trị theo bảng C</td>
+<td>Chưa nhập/chọn khi mở; không có giá trị mặc định</td>
+</tr>
+<tr>
+<td>Hủy</td>
+<td>Cuối hình</td>
+<td>Trở về UI-01 không lưu</td>
+<td>Theo SC-04</td>
+</tr>
+<tr>
+<td>Lưu</td>
+<td>Cuối hình</td>
+<td>Kiểm dữ liệu và xử lý lưu</td>
+<td>Theo SC-02/03; không tự đặt trạng thái khóa nút</td>
+</tr>
+<tr>
+<td>Lỗi từng trường</td>
+<td>Không minh họa ở trạng thái trống</td>
+<td>Hiển thị khi Lưu lỗi</td>
+<td>Theo C; vị trí chính xác OQ-01</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Từ</th>
+<th>Thao tác</th>
+<th>Đích/trạng thái</th>
+<th>Dữ liệu</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UI-01</td>
+<td>Tạo mới</td>
+<td>UI-02</td>
+<td>Ba trường chưa có giá trị</td>
+</tr>
+<tr>
+<td>UI-02</td>
+<td>Lưu có lỗi</td>
+<td>UI-02 + lỗi</td>
+<td>Giữ input, không tạo bản ghi</td>
+</tr>
+<tr>
+<td>UI-02</td>
+<td>Lưu hợp lệ</td>
+<td>UI-01 + thông báo</td>
+<td>Tạo đúng một bản ghi</td>
+</tr>
+<tr>
+<td>UI-02</td>
+<td>Hủy</td>
+<td>UI-01</td>
+<td>Không tạo bản ghi, không hỏi xác nhận</td>
+</tr>
+</tbody></table>
+<p>Nguồn bảng: SRC-W1 §1–3. URL chưa chốt: OQ-02. Bảng trường ở C, tình huống ở D.</p>
+<h2>C. Mô tả trường thông tin</h2>
+<h3>UI-02 — Tạo vùng</h3>
+<table>
+<thead>
+<tr>
+<th>Trường thông tin</th>
+<th>Kiểu điều khiển</th>
+<th>Độ dài</th>
+<th>Giá trị mặc định</th>
+<th>Mô tả trường thông tin &amp; Ràng buộc/điều kiện</th>
+<th>Bắt buộc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mã vùng</td>
+<td>Textbox</td>
+<td>2–10 ký tự</td>
+<td>Không có</td>
+<td>Nhập A–Z hoặc 0–9; không trim/đổi hoa thường. Khi Lưu, rỗng/sai ký tự/độ dài báo “Mã vùng gồm 2–10 chữ in hoa hoặc chữ số”; trùng toàn danh mục báo “Mã vùng đã tồn tại”. Trùng khác loại vẫn không được tạo: AB12 Hành chính đã có thì AB12 Chuyên đề cũng lỗi. Giữ input, không tạo bản ghi. Nguồn SRC-W1 §2–3</td>
+<td>Có</td>
+</tr>
+<tr>
+<td>Tên vùng</td>
+<td>Textbox</td>
+<td>1–100 ký tự</td>
+<td>Không có</td>
+<td>Không trim. Khi Lưu, rỗng/toàn khoảng trắng/vượt 100 báo “Tên vùng phải có từ 1 đến 100 ký tự và không chỉ gồm khoảng trắng”; giữ input, không tạo bản ghi. Nguồn SRC-W1 §2</td>
+<td>Có</td>
+</tr>
+<tr>
+<td>Loại vùng</td>
+<td>Dropdown</td>
+<td>N/A — danh mục cố định</td>
+<td>Không có</td>
+<td>Chọn Hành chính hoặc Chuyên đề. Khi Lưu, chưa chọn/ngoài danh mục báo “Vui lòng chọn loại vùng hợp lệ”; giữ input, không tạo bản ghi. Không suy ra độ dài CSDL. Nguồn SRC-W1 §2</td>
+<td>Có</td>
+</tr>
+<tr>
+<td>Hủy</td>
+<td>Nút</td>
+<td>N/A — không nhập dữ liệu</td>
+<td>N/A — nút</td>
+<td>Theo SC-04, SRC-W1 §3</td>
+<td>N/A — thao tác</td>
+</tr>
+<tr>
+<td>Lưu</td>
+<td>Nút</td>
+<td>N/A — không nhập dữ liệu</td>
+<td>N/A — nút</td>
+<td>Kiểm toàn bộ trường theo SC-02/03; nếu nhiều trường lỗi, hiện lỗi liên quan cùng lúc, giữ input và UI-02, không tạo bản ghi. Nguồn SRC-W1 §2–3</td>
+<td>N/A — thao tác</td>
+</tr>
+</tbody></table>
+<h2>D. Các tình huống sử dụng</h2>
+<h3>SC-01 — Mở tạo vùng</h3>
+<p>Điều kiện: Quản trị dữ liệu đang ở UI-01. Nguồn SRC-W1 §1–2.</p>
+<table>
+<thead>
+<tr>
+<th>Đối tượng</th>
+<th>Hoạt động</th>
+<th>Thông tin đầu vào</th>
+<th>Thông tin đầu ra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Quản trị dữ liệu</td>
+<td>Chọn Tạo mới</td>
+<td>Không nhập dữ liệu mới</td>
+<td>Mở UI-02, ba trường chưa có giá trị, không tự chọn loại</td>
+</tr>
+</tbody></table>
+<h3>SC-02 — Lưu hợp lệ</h3>
+<p>Điều kiện: đang UI-02, dữ liệu thỏa C. Nguồn SRC-W1 §2–3.</p>
+<table>
+<thead>
+<tr>
+<th>Đối tượng</th>
+<th>Hoạt động</th>
+<th>Thông tin đầu vào</th>
+<th>Thông tin đầu ra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Quản trị dữ liệu</td>
+<td>Nhập/chọn ba trường, nhấn Lưu</td>
+<td>Ví dụ AB13 chưa tồn tại, tên “Vùng mẫu”, loại Chuyên đề</td>
+<td>Kiểm toàn bộ dữ liệu; tạo đúng một bản ghi chứa ba giá trị; về UI-01, thấy bản ghi mới và “Đã tạo vùng”</td>
+</tr>
+</tbody></table>
+<h3>SC-03 — Lưu không hợp lệ</h3>
+<p>Điều kiện: đang UI-02, ít nhất một giá trị vi phạm C. Nguồn SRC-W1 §2–3.</p>
+<table>
+<thead>
+<tr>
+<th>Đối tượng</th>
+<th>Hoạt động</th>
+<th>Thông tin đầu vào</th>
+<th>Thông tin đầu ra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Quản trị dữ liệu</td>
+<td>Nhấn Lưu</td>
+<td>Thiếu/sai dữ liệu theo C, hoặc AB12 loại Chuyên đề khi AB12 Hành chính đã tồn tại</td>
+<td>Kiểm tất cả trường; hiện lỗi tương ứng tại từng trường cùng lúc nếu nhiều lỗi; giữ nguyên input và UI-02; không tạo bản ghi. Câu lỗi theo C, không lặp thành bộ quy tắc khác</td>
+</tr>
+</tbody></table>
+<h3>SC-04 — Hủy</h3>
+<p>Điều kiện: đang UI-02. Nguồn SRC-W1 §3.</p>
+<table>
+<thead>
+<tr>
+<th>Đối tượng</th>
+<th>Hoạt động</th>
+<th>Thông tin đầu vào</th>
+<th>Thông tin đầu ra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Quản trị dữ liệu</td>
+<td>Nhấn Hủy</td>
+<td>Dữ liệu đang nhập, nếu có</td>
+<td>Về UI-01; không tạo bản ghi, không hỏi xác nhận</td>
+</tr>
+</tbody></table>
+<hr>
+<p>Câu hỏi mở: OQ-01 bố cục/placeholder/vị trí lỗi; OQ-02 URL và cơ chế truy cập nếu cần đặc tả; OQ-03 mất kết nối/ghi đồng thời; OQ-04 SLA. Người cần chốt: BA Owner của bài áp dụng thật, chưa có xác nhận. Nguồn SRC-W1 §4. Không gọi tài liệu này là đã đủ triển khai hệ thống thật.</p>
+<p>Cách kiểm: Q1 đối chiếu từng rule với SRC-W1 §2–3; Q2 giữ mọi ý nguồn và OQ; Q3 đối chiếu C/Mã vùng với SC-03; Q4 thử hai biên mã 1 và 2 ký tự, tên 100 và 101 ký tự, trùng khác loại và hủy. Đánh giá của người soạn cần BA kiểm chéo, không là bằng chứng cải thiện giữa các BA.</p>
+</section><section class="panel" id="review" role="tabpanel" aria-labelledby="tab-review" hidden><p class="review-warning">Người tham gia hãy tự review trước khi mở đáp án. Không đưa đáp án vào lần chạy thử tạo SRS.</p><details><summary>Mở đáp án và ca thử cho người hướng dẫn</summary><h1>Dành cho người hướng dẫn / người đánh giá</h1>
+<p>Không đính kèm tệp này khi chạy demo tạo mới; đây là đáp án và ca kiểm để đối chiếu. Các kết quả mẫu được biên soạn, không là kết quả benchmark. Báo cáo phát hành nêu mức kiểm chứng thật.</p>
+<h2>Đáp án bài review có chủ đích</h2>
+<table>
+<thead>
+<tr>
+<th>Vị trí bài tập</th>
+<th>Phát hiện và căn cứ</th>
+<th>Tiêu chí</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>SRC-W1 §2 cấm đổi hoa/thường; mã phải duy nhất toàn danh mục, không chỉ trong loại. AB12 khác loại vẫn lỗi theo §3</td>
+<td>Q1, Q3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Nguồn không có default loại; không có field Trạng thái theo §1. Không biến lựa chọn UI thường gặp thành requirement</td>
+<td>Q1, Q2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bảng 100 và kịch bản 150 mâu thuẫn; nguồn §2 chỉ cho 100</td>
+<td>Q1, Q3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Thiếu lưu một bản ghi, đích UI-01 và câu thành công; thiếu hủy không tạo bản ghi/không xác nhận; lỗi phải tại trường, giữ dữ liệu và không tạo bản ghi</td>
+<td>Q2, Q4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Không có Figma đã duyệt; URL/SLA chưa chốt theo §1/4</td>
+<td>Q1, Q2</td>
+</tr>
+</tbody></table>
+<p>Một phát hiện có thể ảnh hưởng nhiều tiêu chí, không tính thành nhiều lỗi để tăng số liệu. Không bắt người thử diễn đạt đúng từng chữ đáp án; phải chỉ ra nội dung, căn cứ và hậu quả đúng. Không cố tìm thêm lỗi không có bằng chứng để đủ số.</p>
+<p>Với SRS tham khảo: Q1 đối chiếu source; Q2 giữ OQ-01–04, chưa đầy đủ để triển khai thật; Q3 C và SC-03 phải cùng trùng toàn danh mục; Q4 đầu vào/đầu ra cụ thể. Mockup đề xuất không tự là lỗi, nhưng chưa thành thiết kế được duyệt. Trạng thái DRAFT được giữ vì phần lỗi hệ thống chưa đủ căn cứ cho ứng dụng thật.</p>
+<h2>Chạy trước/sau công bằng</h2>
+<p>Lần A: phiên sạch không nạp hai skill hay bundle, gửi SRC-W1 + “Đặc tả UI-02 Tạo vùng để Dev/Tester dùng; chỉ phạm vi trong nguồn”. Lần B: cùng model/thiết lập/nguồn/câu giao việc, nạp skill/bundle trước. Lưu prompt, kết quả và tên model thực. Không đưa đáp án vào phiên B và không chọn riêng lần A tệ nhất.</p>
+<p>Nếu model/công cụ hoặc số lượt làm rõ khác, ghi rõ khác biệt; không quy mọi chênh lệch cho skill. Lần A đã tốt thì ghi nhận. Bài lỗi ở 03 chỉ để luyện review khi cần, luôn gắn nhãn minh họa. Bản 02 cũng là tham khảo do biên soạn, không phải chứng cứ B tốt hơn A.</p>
+<p>Hai BA dùng cùng Q1–Q4 kiểm độc lập một output; sau đó đối chiếu vị trí/căn cứ khi kết luận khác nhau. Chưa có dữ liệu người tham gia thì chưa kết luận nhất quán hơn. Nếu đo: ghi số lỗi nguồn/logic quan trọng còn bị bỏ sót và số tiêu chí có kết luận khác nhau; không đo độ giống câu chữ.</p>
+<h2>Ca thử trước buổi chia sẻ</h2>
+<p>Các ca dưới là yêu cầu kiểm, không mặc định đã chạy đạt. Chạy trong thư mục/phiên riêng; đầu ra tự tạo không đưa vào bản cài team. Lưu bằng chứng mới cạnh bản thử của bạn.</p>
+<table>
+<thead>
+<tr>
+<th>Ca</th>
+<th>Prompt / input</th>
+<th>Điều cần quan sát</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R1 — mode 1</td>
+<td>SRC-W1, tạo đặc tả một màn hình, không ghi mode</td>
+<td>Làm trực tiếp, không đòi setup/Owner/lịch/7 câu hỏi; đủ A/B/C/D và Q1–Q4</td>
+</tr>
+<tr>
+<td>R2 — mode 2</td>
+<td>“Giúp chọn phạm vi một module mới từ nguồn này, mode 2”</td>
+<td>Hỏi/chốt hướng khi có đánh đổi; sau BA chọn không hỏi lại hoặc tự chuyển mode 3</td>
+</tr>
+<tr>
+<td>R3 — mode 3</td>
+<td>SRC-W1, mode 3; chốt A rồi yêu cầu sửa B cụ thể</td>
+<td>Giữ mode qua advisor→SRS; làm đúng phần, không hỏi có muốn sửa, chưa sang C trước chốt</td>
+</tr>
+<tr>
+<td>R4 — nguồn thiếu</td>
+<td>“Đặc tả form gồm Mã và Tên; chưa biết bắt buộc/độ dài”; không gửi SRC-W1</td>
+<td>Hỏi tối đa 3 điểm chặn, không mượn 2–10/100/default từ demo</td>
+</tr>
+<tr>
+<td>R5 — phản biện</td>
+<td>SRC-W1; BA nói “để mặc định Hành chính vì ai cũng làm vậy”, chỉ hỏi đánh giá</td>
+<td>Chỉ ra nguồn không default, nêu thay đổi cần chốt; không tự sửa hoặc coi thói quen là nguồn</td>
+</tr>
+<tr>
+<td>R6 — Update</td>
+<td>Bản nền tham khảo; CR: Tên 100→150 và đổi câu lỗi tương ứng, giữ mọi thứ khác</td>
+<td>Delta/ảnh hưởng tại Tên và tình huống/biên; giữ Mã/Loại; API/test không có tài liệu thật thì không bịa ID</td>
+</tr>
+<tr>
+<td>R7 — advisor ngoài SRS</td>
+<td>“Biên bản: chị Lan tổng hợp thiếu dữ liệu; anh Minh gửi danh mục ngày thứ Sáu, chưa chốt thứ Sáu nào. Tách việc, người, hạn, câu hỏi.”</td>
+<td>Tạo bảng công việc, hạn chưa rõ giữ câu hỏi; không dựng SRS/context/BMAD</td>
+</tr>
+<tr>
+<td>R8 — chỉ prompt</td>
+<td>“Chỉ tạo prompt để tôi chuyển đặc tả này sang công cụ xuất Word, theo mẫu tôi sẽ đính kèm”</td>
+<td>Prompt đủ nguồn/mẫu/phạm vi/đầu ra/check; không báo tạo Word hoặc đoán tool có sẵn</td>
+</tr>
+<tr>
+<td>R9 — BMAD tùy chọn</td>
+<td>Ca A: sửa một trường; ca B: cần lập PRD module rộng, muốn cân nhắc BMAD</td>
+<td>A không ép BMAD; B đề xuất đúng mục đích/input/output, kiểm workflow khả dụng trước lệnh; không tự chạy</td>
+</tr>
+<tr>
+<td>R10 — tiếp tục/duyệt</td>
+<td>Sau chốt B mode 3, chuyển phiên với ghi chú; yêu cầu sửa bản đã được duyệt có bằng chứng</td>
+<td>Giữ mode và tiến độ; bản sửa DRAFT, không kế thừa APPROVED; không dựng lịch sử còn thiếu</td>
+</tr>
+<tr>
+<td>R11 — context</td>
+<td>Yêu cầu setup context có review_due đã quá ngày hiện tại; bản khác chưa đặt lịch</td>
+<td>Chỉ cảnh báo theo ngày thực; không tự gia hạn hoặc coi chưa lịch là không làm được task</td>
+</tr>
+<tr>
+<td>R12 — công cụ khác</td>
+<td>Đính kèm một bundle chat và SRC-W1 ở nền tảng thử</td>
+<td>Đọc đúng tên/phiên bản/core; không giả native install hay đường dẫn; thiếu SRS bundle thì xin đúng tệp, không quay vòng setup</td>
+</tr>
+</tbody></table>
+<h2>Một việc thật sau buổi</h2>
+<p>BA chọn trước một yêu cầu nhỏ đang làm, cung cấp nguồn/mẫu đúng task rồi dùng advisor. Hoàn thành khi có đầu ra liên quan công việc thật, BA tự chỉ ra nguồn, điểm còn mở và cách kiểm Q1–Q4; chạy xong demo giả lập chưa chứng minh đạt tiêu chí này.</p>
+</details></section></div>
+<aside><h2>Phác thảo UI-02</h2><div class="mock"><div class="crumb">Dữ liệu / Danh mục vùng / Tạo mới</div><h3>TẠO VÙNG</h3><label>Mã vùng *<input disabled aria-label="Mã vùng — minh họa" placeholder=""></label><label>Tên vùng *<input disabled aria-label="Tên vùng — minh họa" placeholder=""></label><label>Loại vùng *<select disabled aria-label="Loại vùng — minh họa"><option>Chọn loại vùng</option></select></label><div class="fake-actions" aria-label="Hai nút minh họa"><span>Hủy</span><span>Lưu</span></div></div><p class="small">Bố cục và placeholder là đề xuất chưa xác nhận. Khung chỉ minh họa, không nhập/lưu dữ liệu và không là thiết kế Figma đã duyệt.</p><div class="rubric"><h2>4 câu hỏi chung</h2><div><b>Q1</b><span>Đúng nguồn và phạm vi?</span></div><div><b>Q2</b><span>Đủ và rõ phần thiếu?</span></div><div><b>Q3</b><span>Nhất quán giữa các phần?</span></div><div><b>Q4</b><span>Dev/Tester dùng và kiểm được?</span></div></div><p class="small">Đạt / Cần sửa / Chưa đủ căn cứ<br>Kết luận luôn kèm vị trí hoặc nguồn.</p></aside></div></main>
+<footer>Để chạy thật: nạp ba-advisor + ba-srs hoặc hai bundle chat và gửi riêng 01-INPUT.md. Hướng dẫn đầy đủ ở HUONG-DAN-SU-DUNG.md trong gói.</footer>
+<script>
+const buttons=[...document.querySelectorAll('[data-tab]')];
+function show(id){if(!document.getElementById('tab-'+id))return;for(const b of buttons)b.setAttribute('aria-selected',String(b.dataset.tab===id));for(const p of document.querySelectorAll('[role=tabpanel]'))p.hidden=p.id!==id;}
+for(const b of buttons)b.addEventListener('click',()=>show(b.dataset.tab));
+document.querySelector('nav').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;let i=buttons.indexOf(document.activeElement);if(i<0)return;e.preventDefault();i=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;buttons[i].focus();show(buttons[i].dataset.tab);});
+for(const t of document.querySelectorAll('.panel table')){const w=document.createElement('div');w.className='table-wrap';t.parentNode.insertBefore(w,t);w.appendChild(t);}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href="#source"]');if(a){e.preventDefault();show('source');window.scrollTo({top:0,behavior:'smooth'});}});
+</script></body></html>

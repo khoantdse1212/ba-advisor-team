@@ -1,0 +1,4 @@
+interface:
+  display_name: "BA SRS"
+  short_description: "Đặc tả màn hình và SRS theo mẫu, kiểm nguồn và tác động"
+  default_prompt: "Dùng $ba-srs để tạo hoặc rà soát đặc tả từ nguồn tôi cung cấp theo mode hiện tại."

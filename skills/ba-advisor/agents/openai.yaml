@@ -1,0 +1,4 @@
+interface:
+  display_name: "BA Advisor"
+  short_description: "Tư vấn, làm việc BA và kiểm đầu ra theo tiêu chí chung"
+  default_prompt: "Dùng $ba-advisor để xử lý công việc BA tôi giao, hỏi đúng phần thiếu và chỉ rõ cách kiểm kết quả."
