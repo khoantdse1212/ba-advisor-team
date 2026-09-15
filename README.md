@@ -1,5 +1,5 @@
 # BA Advisor Team
-
+![Tổng quan BA Advisor Team](./ba-advisor-team-overview.png)
 Bộ skill dùng chung cho team Business Analyst, giúp AI hỗ trợ theo cùng một cách: đọc đúng nguồn, làm rõ phần thiếu, phản biện khi cần, tạo tài liệu có cấu trúc và kiểm tra chất lượng trước khi bàn giao.
 
 ## Có gì trong bộ này?
