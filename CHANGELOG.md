@@ -6,7 +6,7 @@ Các thay đổi đáng chú ý của BA Advisor Team. Mỗi thay đổi ghi lo�
 
 Một skill `ba-advisor`; mọi yêu cầu đi qua một điểm vào. Hợp nhất bản 1.3.3 với các cải tiến về đầu ra và bối cảnh thực tế.
 
-- **Cách làm:** lõi viết theo vai trò, đầu ra, người nhận; các mục chính theo sáng kiến: Phạm vi áp dụng, Nguồn cần đọc, Khi thiếu thông tin, Kiểm trước khi bàn giao. Toàn bộ chỉ dẫn viết dạng khẳng định.
+- **Cách làm:** tổ chức chỉ dẫn theo vai trò, đầu ra và người nhận; làm rõ phạm vi áp dụng, nguồn cần đọc, cách xử lý thông tin thiếu và kiểm tra trước khi bàn giao.
 - **Cách làm:** Đúng ý và sáng tạo: nội dung sáng tạo mang dấu [Đề xuất] và vào tài liệu sau khi BA chọn.
 - **Mẫu:** Đầu ra sạch: Nội dung bàn giao (dán thẳng vào tài liệu) và Ghi chú cho BA; lời dặn "không/đừng/chỉ" của BA được áp dụng và vắng mặt trong phần bàn giao.
 - **Cách làm:** câu hỏi kèm đáp án đề xuất; việc nhiều bước nêu 2–4 tiêu chí đạt; trả lời câu hỏi của Dev; hướng dẫn BA mới bắt đầu bằng một việc nhỏ; báo đúng thao tác đã làm.
@@ -14,7 +14,7 @@ Một skill `ba-advisor`; mọi yêu cầu đi qua một điểm vào. Hợp nh�
 - **Nguồn:** điều kiện dữ liệu theo xác nhận môi trường; hướng dẫn làm sạch tài liệu, checklist kỹ thuật, mẫu xác nhận chuyển vào `references/bao-mat-du-lieu.md`.
 - **Cách làm:** lệnh nhanh `chốt`, `sửa`, `ghi nhớ`, `kiểm`, `làm tiếp`, `gọn`; bảng nơi lưu (việc, dự án, skill); cấu trúc thư mục dự án `HO-SO-DU-AN.md`, `nguon/`, `ket-qua/<viec>/`.
 - **Mẫu:** gộp `ba-srs` vào `references/srs.md`; cập nhật sửa trên bản hiện hành, giữ bản nền phục hồi được; Delta khi BA yêu cầu; thêm luồng, bản mẫu, đối chiếu Figma, nhiều use case, mẫu Word, URD, hệ thống có sẵn, web và di động.
-- **Cách kiểm:** câu hỏi Q1–Q4 đúng nguyên văn sáng kiến; định nghĩa Đạt / Cần sửa / Chưa đủ căn cứ, thêm Chưa kiểm chứng; kết quả kiểm ở Ghi chú cho BA hoặc mục kiểm của mẫu dự án; trạng thái theo dự án, mặc định Bản nháp / Chờ rà soát / Đã duyệt.
+- **Cách kiểm:** thống nhất bốn câu hỏi Q1–Q4; định nghĩa Đạt / Cần sửa / Chưa đủ căn cứ, thêm Chưa kiểm chứng; kết quả kiểm ở Ghi chú cho BA hoặc mục kiểm của mẫu dự án; trạng thái theo dự án, mặc định Bản nháp / Chờ rà soát / Đã duyệt.
 - Repo: README có bước thiết lập cho công cụ AI (giữ tùy chỉnh, báo cáo thiết lập), thử ngay với biên bản giả lập; `packages/ba-advisor.zip` cho ứng dụng Claude có Skills; `.gitignore` giữ dữ liệu dự án ngoài repo. Demo, ca thử, công cụ đóng gói thuộc bộ công cụ của người quản lý.
 
 ## [1.3.3] — 2026-10-14

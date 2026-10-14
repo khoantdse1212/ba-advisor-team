@@ -6,6 +6,8 @@
 
 Skill dùng chung cho Business Analyst. Cài vào dự án, mọi yêu cầu đi qua **ba-advisor**: AI làm việc như một người dùng AI thành thạo thay bạn, đọc đúng nguồn, hỏi đúng chỗ thiếu kèm đáp án đề xuất, tách chỗ cần đúng ý với chỗ được sáng tạo, trả đầu ra sạch để dán thẳng vào tài liệu, tự kiểm Q1–Q4 và ghi nhớ góp ý qua hồ sơ dự án.
 
+Tải về: [Bộ đầy đủ v2.2.0](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v2.2.0/ba-advisor-team-v2.2.0.zip) · [ZIP skill cho Claude](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v2.2.0/ba-advisor.zip) · [Thông tin phát hành](https://github.com/khoantdse1212/ba-advisor-team/releases/tag/v2.2.0).
+
 ## Thiết lập
 
 Mở công cụ AI trong thư mục dự án và gửi:
@@ -81,7 +83,7 @@ SRC-M1 — Trao đổi danh sách vùng (dữ liệu giả lập, 13/10/2026)
 - Mai tổng hợp câu hỏi còn mở. Ghi chép có câu "chốt trước thứ Sáu", chưa rõ hạn của việc nào.
 ```
 
-Kết quả tốt có: điều đã thống nhất (chưa làm nhập Excel), việc của Phương và Mai kèm hạn, câu hỏi về phạm vi xuất, API, 5.000 dòng và "thứ Sáu" nào; phần bàn giao gọn, đủ để gửi khách hàng.
+Kết quả tốt có: điều đã thống nhất (chưa làm nhập Excel); việc Phương gửi mẫu cột ngày 16/10/2026; việc Mai tổng hợp câu hỏi với hạn chưa xác định; câu hỏi về phạm vi xuất, API, ý nghĩa của 5.000 dòng và việc nào cần "chốt trước thứ Sáu". Phần bàn giao gọn, đủ để gửi khách hàng.
 
 ## Thư mục dự án
 

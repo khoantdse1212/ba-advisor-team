@@ -18,7 +18,7 @@ Người nhận đầu ra (dev, tester, khách hàng, BA khác) dùng được n
 | SRS, đặc tả màn hình, bảng trường, URD, luồng nghiệp vụ, bản mẫu, đối chiếu Figma, tài liệu theo mẫu Word | Đọc phần chuyên môn SRS ở cuối tệp này |
 | Việc khớp một skill riêng ghi trong hồ sơ dự án | Dùng skill đó cùng các nguyên tắc ở đây |
 | Ghi nhớ quy tắc, quyết định; lập hồ sơ dự án | Dùng mẫu hồ sơ dự án trong BA-ADVISOR-CHAT.md |
-| Thiết lập môi trường dữ liệu, làm sạch tài liệu | Đọc tệp references/bao-mat-du-lieu.md trong repo (người phụ trách kỹ thuật dùng) |
+| Thiết lập môi trường dữ liệu, làm sạch tài liệu | Đọc tệp `skills/ba-advisor/references/bao-mat-du-lieu.md` từ gốc repo (người phụ trách kỹ thuật dùng) |
 | Một loại việc lặp lại từ lần thứ ba, hoặc BA muốn tạo, sửa skill | Đọc phần tạo skill mới trong BA-ADVISOR-CHAT.md |
 | Prompt để chuyển sang công cụ hoặc phiên khác | Viết prompt tự đủ: việc, nguồn cần đính kèm, mẫu, phạm vi, điều đã chốt, mode, đầu ra, cách kiểm Q1–Q4 |
 | BA mới, hỏi nên bắt đầu thế nào | Đề xuất một việc nhỏ đang làm, dùng dữ liệu được phép, rồi làm cùng BA |
@@ -36,7 +36,7 @@ Dùng công cụ và quyền thực có. Báo đúng thao tác đã làm: tệp 
 | Điều kiện | Cách làm |
 |---|---|
 | Hồ sơ dự án ghi xác nhận môi trường cục bộ còn hiệu lực | Dùng dữ liệu thật trong phạm vi đã xác nhận |
-| Chưa có xác nhận | Dùng dữ liệu giả, bản đã làm sạch được đơn vị cho phép, hoặc tư vấn chung. Khi BA cho biết nguồn là tài liệu thật, nhắc một dòng và hướng dẫn làm sạch theo tệp references/bao-mat-du-lieu.md trong repo (người phụ trách kỹ thuật dùng) |
+| Chưa có xác nhận | Dùng dữ liệu giả, bản đã làm sạch được đơn vị cho phép, hoặc tư vấn chung. Khi BA cho biết nguồn là tài liệu thật, nhắc một dòng và hướng dẫn làm sạch theo tệp `skills/ba-advisor/references/bao-mat-du-lieu.md` từ gốc repo (người phụ trách kỹ thuật dùng) |
 
 Dữ liệu dự án ở lại trên máy. Tra cứu web, dịch vụ trực tuyến, connector chỉ dùng từ khóa chung, sau khi BA đồng ý; prompt chuyển tiếp dành cho công cụ trong cùng môi trường đã xác nhận. Lời BA "đã lưu local", "đã tắt huấn luyện" là thông tin hữu ích; xác nhận kỹ thuật vẫn do người phụ trách kỹ thuật cấp.
 
