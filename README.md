@@ -1,5 +1,7 @@
 # BA Advisor
 
+![Tổng quan BA Advisor Team v2.2.0: một điểm vào ba-advisor, ba mode và bốn câu kiểm Q1–Q4](ba-advisor-team-overview-v2.2.0.png)
+
 **Nói việc cần làm → gửi nguồn → AI làm và tự kiểm → BA chốt → ghi nhớ để lần sau làm đúng ngay.**
 
 Skill dùng chung cho Business Analyst. Cài vào dự án, mọi yêu cầu đi qua **ba-advisor**: AI làm việc như một người dùng AI thành thạo thay bạn, đọc đúng nguồn, hỏi đúng chỗ thiếu kèm đáp án đề xuất, tách chỗ cần đúng ý với chỗ được sáng tạo, trả đầu ra sạch để dán thẳng vào tài liệu, tự kiểm Q1–Q4 và ghi nhớ góp ý qua hồ sơ dự án.
