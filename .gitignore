@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+/HO-SO-DU-AN.md
+/DU-AN.md
+/nguon/
+/ket-qua/
+/output/
