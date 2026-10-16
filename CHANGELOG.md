@@ -2,7 +2,19 @@
 
 Các thay đổi đáng chú ý của BA Advisor Team. Mỗi thay đổi ghi loại góp ý dẫn tới nó: nguồn, cách làm, mẫu hoặc cách kiểm.
 
-## [2.2.0] — 2026-10-14
+## [2.2.0] — Cập nhật 2026-10-16
+
+Giữ số phiên bản theo lựa chọn của chủ repo; nội dung cập nhật trên `main` và hai gói ZIP đính kèm. Tag gốc giữ lịch sử phát hành ban đầu.
+
+- **Cách làm:** khi tiếp tục, tìm đúng việc, bản hiện hành và nguồn/quyết định liên quan; ghi chú chung chuyển thành chỉ mục từng việc.
+- **Mẫu:** giữ mốc đầu ra BA chọn theo đúng phần và phạm vi; quy tắc demo hoặc một việc lưu tại việc đó, không lan thành quy tắc chung.
+- **Cách kiểm:** Q3 đối chiếu trước/sau, gồm cả phần phải giữ nguyên; áp dụng cho mọi đầu ra được giao cập nhật.
+- **Nguồn:** giữ trạng thái đề nghị/đã xác nhận khi chuyển tài liệu; tách lời nhắc biên soạn khỏi quy tắc hệ thống; ghi chú ngắn dẫn nguồn thay vì trở thành nguồn thay thế.
+- **Cách làm:** khôi phục khi thiếu bản hiện hành hoặc lẫn việc; hỗ trợ ghi chú gửi lại ở công cụ chỉ có chat. Giữ mode, mẫu SRS và điều kiện dữ liệu hiện có.
+
+Đã thử một số tình huống bằng phiên AI độc lập với dữ liệu giả: chọn mốc, đổi việc, sửa theo CR và tiếp tục phiên. Chưa kiểm chứng hội thoại rất dài hoặc mọi nền tảng; lượt thử lưu ghi chú cuối bị giới hạn dịch vụ trước khi hoàn tất hội thoại, phần tệp đã được đối chiếu riêng.
+
+## [2.2.0] — Phát hành 2026-10-14
 
 Một skill `ba-advisor`; mọi yêu cầu đi qua một điểm vào. Hợp nhất bản 1.3.3 với các cải tiến về đầu ra và bối cảnh thực tế.
 

@@ -2,11 +2,15 @@
 
 ![Tổng quan BA Advisor Team v2.2.0: một điểm vào ba-advisor, ba mode và bốn câu kiểm Q1–Q4](ba-advisor-team-overview-v2.2.0.png)
 
-**Nói việc cần làm → gửi nguồn → AI làm và tự kiểm → BA chốt → ghi nhớ để lần sau làm đúng ngay.**
+**Nói việc cần làm → gửi nguồn → AI làm và tự kiểm → BA chốt → lưu đúng việc để dùng tiếp.**
 
 Skill dùng chung cho Business Analyst. Cài vào dự án, mọi yêu cầu đi qua **ba-advisor**: AI làm việc như một người dùng AI thành thạo thay bạn, đọc đúng nguồn, hỏi đúng chỗ thiếu kèm đáp án đề xuất, tách chỗ cần đúng ý với chỗ được sáng tạo, trả đầu ra sạch để dán thẳng vào tài liệu, tự kiểm Q1–Q4 và ghi nhớ góp ý qua hồ sơ dự án.
 
-Tải về: [Bộ đầy đủ v2.2.0](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v2.2.0/ba-advisor-team-v2.2.0.zip) · [ZIP skill cho Claude](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v2.2.0/ba-advisor.zip) · [Thông tin phát hành](https://github.com/khoantdse1212/ba-advisor-team/releases/tag/v2.2.0).
+**v2.2.0 · Cập nhật 16/10/2026:** giữ đúng bản hiện hành, phạm vi từng việc và cách trình bày BA đã chọn khi sửa hoặc tiếp tục phiên.
+
+Tải về: [Bộ đầy đủ v2.2.0](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v2.2.0/ba-advisor-team-v2.2.0.zip) · [ZIP skill v2.2.0 cho Claude](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v2.2.0/ba-advisor.zip) · [Thông tin phát hành v2.2.0](https://github.com/khoantdse1212/ba-advisor-team/releases/tag/v2.2.0).
+
+Bản cập nhật nằm trên nhánh `main` và hai ZIP đính kèm release. Tag `v2.2.0` cùng mục “Source code” tự sinh vẫn là mốc phát hành ban đầu; dùng các ZIP phía trên để nhận nội dung cập nhật. Khi thiết lập, ghi thêm commit hoặc ngày cập nhật để phân biệt các bản cùng số phiên bản.
 
 ## Thiết lập
 
@@ -55,9 +59,9 @@ Thêm "mode 2" để chọn hướng trước, "mode 3" để làm và duyệt t
 |---|---|
 | `chốt` | Chốt phần hiện tại, sang phần tiếp |
 | `sửa: …` | Sửa đúng chỗ, kiểm phần phụ thuộc, báo đã đổi gì |
-| `ghi nhớ: …` | Lưu quy tắc vào `HO-SO-DU-AN.md`; các phiên sau tự áp dụng |
+| `ghi nhớ: …` | Lưu quy tắc đúng phạm vi: riêng một việc hoặc dùng chung trong dự án |
 | `kiểm` | Kiểm Q1–Q4 tài liệu đang làm hoặc được gửi |
-| `làm tiếp` | Tiếp tục từ ghi chú trong hồ sơ dự án |
+| `làm tiếp A` | Đọc ghi chú và bản hiện hành của việc A; thiếu tên việc mà có nhiều khả năng thì hỏi |
 | `gọn` | Rút phần ghi chú, giữ nội dung bàn giao |
 
 Mỗi câu trả lời có hai phần: **Nội dung bàn giao** để dán vào tài liệu, với các dấu [Cần xác nhận], [Mâu thuẫn], [Đề xuất]; và **Ghi chú cho BA** gồm câu hỏi, kết quả tự kiểm, thao tác đã làm. BA đối chiếu bằng bốn câu chung và là người xác nhận nội dung bàn giao:
@@ -68,6 +72,14 @@ Mỗi câu trả lời có hai phần: **Nội dung bàn giao** để dán vào 
 | Q2 | Đã đủ nội dung liên quan và chỉ rõ phần còn thiếu chưa? |
 | Q3 | Các phần mô tả, dữ liệu và giao diện có thống nhất không? |
 | Q4 | Người nhận có thể dùng kết quả để làm tiếp và kiểm tra được không? |
+
+### Giữ đúng kết quả qua nhiều lần làm
+
+- **Có bản ưng ý:** “Dùng bản A-v1 làm mốc; giữ cấu trúc và mức chi tiết này khi sửa tiếp.” Nói rõ phần đã chọn, không cần soạn prompt dài.
+- **Giao sửa:** “Sửa thời hạn theo CR này.” AI đọc đúng bản, sửa phần liên quan và đối chiếu phần cần giữ; nguồn được xác nhận mới vẫn có thể thay nghiệp vụ cũ.
+- **Đổi việc hoặc phiên:** “Lưu ghi chú việc A để tôi làm tiếp sau.” Hồ sơ chung dẫn tới từng việc; ghi chú giữ bản hiện hành, quyết định, phần đã kiểm và bước tiếp theo. Phiên mới nói “Làm tiếp A”.
+
+Nếu công cụ chỉ hỗ trợ chat, lưu rồi gửi lại ghi chú cùng bản hiện hành và nguồn liên quan. Skill giúp AI khôi phục từ hồ sơ được đọc; không bảo đảm nền tảng nhớ toàn bộ lịch sử. Chọn bản làm mốc trình bày không đồng nghĩa duyệt toàn bộ nghiệp vụ.
 
 ## Thử ngay
 
@@ -89,7 +101,7 @@ Kết quả tốt có: điều đã thống nhất (chưa làm nhập Excel); vi
 
 ```text
 du-an/
-├── HO-SO-DU-AN.md    nguồn, mẫu, quyết định, câu hỏi mở, quy tắc đã ghi nhớ
+├── HO-SO-DU-AN.md    nguồn, mẫu, quy tắc chung và đường dẫn tới từng việc
 ├── nguon/            tài liệu đầu vào, giữ bản gốc
 └── ket-qua/<viec>/   đầu ra và ghi chú làm tiếp của từng việc
 ```
@@ -105,4 +117,4 @@ Hồ sơ dự án và xác nhận môi trường lưu tại máy, tách khỏi r
 | `chat/` | Bản gộp cho công cụ chưa hỗ trợ thư mục skill |
 | `CHANGELOG.md` | Lịch sử thay đổi theo loại góp ý |
 
-Phiên bản **v2.2.0** · Giấy phép MIT.
+Phiên bản **v2.2.0** · Cập nhật 16/10/2026 · Giấy phép MIT.

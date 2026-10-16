@@ -28,19 +28,23 @@ SRS: <đường dẫn> · URD: <…> · Word: <…>
 
 ## 5. Quyết định đã chốt
 
-| ID | Nội dung | Người, ngày | Căn cứ |
+Chỉ ghi quyết định dùng chung; quyết định riêng dẫn tới ghi chú của việc tương ứng. Khi có quyết định thay thế, giữ liên kết để biết phần nào còn hiệu lực.
+
+| ID | Nội dung, phạm vi áp dụng | Người, ngày | Căn cứ / quyết định thay thế |
 |---|---|---|---|
 
 ## 6. Câu hỏi còn mở
+
+Chỉ ghi câu hỏi dùng chung; câu hỏi riêng đặt ở ghi chú của việc đó hoặc dẫn tới vị trí trong đầu ra, không chép thành hai danh sách.
 
 | ID | Câu hỏi | Người trả lời | Hạn | Trạng thái |
 |---|---|---|---|---|
 
 ## 7. Quy tắc riêng (ghi nhớ)
 
-ba-advisor áp dụng các quy tắc này ở mọi việc sau. Thêm bằng lệnh `ghi nhớ: …`.
+Áp dụng đúng phạm vi đã chọn. Quy tắc riêng của một việc hoặc bản demo lưu trong ghi chú việc đó; chỉ quy tắc dùng chung mới đặt ở đây. Thêm bằng lệnh `ghi nhớ: …`.
 
-| Ngày | Loại (nguồn / cách làm / mẫu / cách kiểm) | Quy tắc | Ví dụ đúng |
+| Ngày | Quy tắc và phạm vi áp dụng | Căn cứ / điều kiện thay thế (nếu có) | Ví dụ đúng |
 |---|---|---|---|
 
 ## 8. Skill riêng của dự án
@@ -48,6 +52,18 @@ ba-advisor áp dụng các quy tắc này ở mọi việc sau. Thêm bằng l�
 | Skill | Dùng khi |
 |---|---|
 
-## 9. Ghi chú làm tiếp
+## 9. Các việc đang mở
 
-Việc, mode: <…> · Thư mục: `ket-qua/<viec>/` · Bản hiện hành, phiên bản, trạng thái: <…> · Câu hỏi còn mở: <…> · Bước tiếp theo: <…>
+| Việc | Ghi chú để tiếp tục |
+|---|---|
+
+Mỗi việc cần làm tiếp có một ghi chú tại `ket-qua/<viec>/` (dùng tệp hiện có nếu phù hợp). Bản hiện hành, trạng thái và bước tiếp theo lưu ở ghi chú đó, không chép lại ở đây. Việc nhỏ làm một lần không cần tạo ghi chú.
+
+Khung ghi chú để phiên sau đọc lại; điền phần đã biết. Khi ghi chú cũ dài, rút nội dung trùng với đầu ra/nguồn thành đường dẫn. Chỉ giữ tóm tắt quyết định chưa có nơi lưu khác, cùng căn cứ và phạm vi. Không dùng ghi chú này làm bản thứ hai của báo cáo thay đổi hoặc Q1–Q4.
+
+- **Việc / mode / phạm vi:** <mục tiêu hiện tại>.
+- **Đang dùng / mốc cần giữ:** <tệp, phiên bản, trạng thái>; <bản BA chọn và điều được chọn>.
+- **Nguồn / quyết định:** <đường dẫn, phần còn hiệu lực hoặc bị thay thế>; <quyết định chỉ có trong chat: nội dung, người, ngày, phạm vi, căn cứ>.
+- **Còn mở:** <dẫn tới câu hỏi, mâu thuẫn và ảnh hưởng bước sau>.
+- **Đã kiểm / chưa kiểm:** <kết luận ngắn kèm vị trí đối chiếu; giới hạn>.
+- **Tiếp theo:** <việc cần làm hoặc quyết định đang chờ>.
