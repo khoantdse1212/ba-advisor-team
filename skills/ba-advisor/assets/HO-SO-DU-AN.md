@@ -61,7 +61,7 @@ Mỗi việc cần làm tiếp có một ghi chú tại `ket-qua/<viec>/` (dùng
 
 Khung ghi chú để phiên sau đọc lại; điền phần đã biết. Khi ghi chú cũ dài, rút nội dung trùng với đầu ra/nguồn thành đường dẫn. Chỉ giữ tóm tắt quyết định chưa có nơi lưu khác, cùng căn cứ và phạm vi. Không dùng ghi chú này làm bản thứ hai của báo cáo thay đổi hoặc Q1–Q4.
 
-- **Việc / mode / phạm vi:** <mục tiêu hiện tại>.
+- **Việc / mode / phạm vi:** <mục tiêu, đầu ra được giao, người dùng đầu ra; tiêu chí đã chốt hoặc còn là đề xuất>.
 - **Đang dùng / mốc cần giữ:** <tệp, phiên bản, trạng thái>; <bản BA chọn và điều được chọn>.
 - **Nguồn / quyết định:** <đường dẫn, phần còn hiệu lực hoặc bị thay thế>; <quyết định chỉ có trong chat: nội dung, người, ngày, phạm vi, căn cứ>.
 - **Còn mở:** <dẫn tới câu hỏi, mâu thuẫn và ảnh hưởng bước sau>.

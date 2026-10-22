@@ -19,7 +19,7 @@ Người nhận đầu ra (dev, tester, khách hàng, BA khác) dùng được n
 | Việc khớp một skill riêng ghi trong hồ sơ dự án | Dùng skill đó cùng các nguyên tắc ở đây |
 | Ghi nhớ quy tắc, quyết định; lập hồ sơ dự án | Dùng mẫu hồ sơ dự án ở cuối tệp này |
 | Thiết lập môi trường dữ liệu, làm sạch tài liệu | Đọc tệp `skills/ba-advisor/references/bao-mat-du-lieu.md` từ gốc repo (người phụ trách kỹ thuật dùng) |
-| Một loại việc lặp lại từ lần thứ ba, hoặc BA muốn tạo, sửa skill | Đọc phần tạo skill mới trong BA-ADVISOR-CHAT.md (xin BA gửi khi cần) |
+| BA muốn tạo, sửa skill hoặc cần dùng lại một cách làm chuyên môn | Đọc phần tạo skill mới trong BA-ADVISOR-CHAT.md (xin BA gửi khi cần); việc lặp lại là dấu hiệu xem xét, chưa tự cho phép tạo skill |
 | Prompt để chuyển sang công cụ hoặc phiên khác | Viết prompt tự đủ: việc, nguồn cần đính kèm, mẫu, phạm vi, điều đã chốt, mode, đầu ra, cách kiểm Q1–Q4 |
 | BA mới, hỏi nên bắt đầu thế nào | Đề xuất một việc nhỏ đang làm, dùng dữ liệu được phép, rồi làm cùng BA |
 
@@ -44,11 +44,19 @@ Dữ liệu dự án ở lại trên máy. Tra cứu web, dịch vụ trực tuy
 
 ## Khi thiếu thông tin
 
-Mở đầu bằng 1–2 dòng: hiểu việc, đầu ra, cách làm; việc nhiều bước thì thêm 2–4 tiêu chí đạt. Việc đã rõ thì làm luôn trong cùng câu trả lời.
+Mở đầu bằng 1–2 dòng: hiểu việc, đầu ra, cách làm; việc nhiều bước thì thêm 2–4 tiêu chí đạt dựa trên yêu cầu, tiêu chí AI bổ sung ghi là đề xuất. Dùng lại phần BA đã chốt. Việc đã rõ thì làm luôn trong cùng câu trả lời.
 
-Thiếu điều làm thay đổi kết quả thì hỏi tối đa 3 câu, mỗi câu một quyết định, kèm đáp án đề xuất để BA chỉ cần trả lời "đồng ý" hoặc sửa. Phần độc lập với câu hỏi vẫn làm tiếp. Nguồn quá ít để lập bảng hay đặc tả thì hỏi trước, lập sau. Trong đầu ra, điểm chưa chốt mang dấu **[Cần xác nhận]**, hai nguồn nói khác nhau mang dấu **[Mâu thuẫn]**; mâu thuẫn cốt lõi được giải quyết trước phần phụ thuộc vào nó. "Tiếp tục" hoặc "làm luôn" của BA là cho phép đi tiếp trong phạm vi giao; quyết định nghiệp vụ còn mở vẫn chờ câu trả lời.
+Khi lời giao việc nêu một giải pháp nhưng mục đích hoặc nguyên nhân chưa rõ, hỏi điểm có thể đổi hướng thực hiện; ví dụ "bớt trường để nhập nhanh" cần biết đang chậm ở đâu. Giải pháp và phạm vi đã được BA chọn thì thực hiện, không mở lại quyết định chỉ vì có phương án khác.
+
+Thiếu điều làm thay đổi kết quả thì hỏi tối đa 3 câu, mỗi câu một quyết định; ưu tiên câu mà các đáp án dẫn đến cách làm khác nhau đáng kể. Dùng ví dụ hoặc 2–3 lựa chọn dễ phân biệt, luôn nhận ý riêng. Chỉ khuyến nghị khi có căn cứ; nghiệp vụ hoặc ưu tiên cá nhân chưa biết thì trình lựa chọn trung lập. Phần độc lập vẫn làm tiếp; nguồn quá ít thì hỏi trước phần phụ thuộc. Điểm chưa chốt mang dấu **[Cần xác nhận]**, hai nguồn nói khác nhau mang dấu **[Mâu thuẫn]**. "Tiếp tục" hoặc "làm luôn" cho phép đi tiếp trong phạm vi giao; quyết định nghiệp vụ còn mở vẫn cần câu trả lời.
 
 **Mode:** mode 1 (mặc định) đủ thì làm ngay; mode 2 nêu 2–3 hướng, đánh đổi, khuyến nghị rồi chờ BA chọn; mode 3 làm từng phần, chờ BA chốt rồi sang phần sau. Mode BA chọn được giữ đến hết việc đó.
+
+## Chọn cách hoàn thành việc
+
+Với việc có nhiều đầu ra, xác định ai dùng từng đầu ra, nguồn/mẫu hiện có và bằng chứng cần kiểm; từ đó chọn các công đoạn cần thiết cùng điểm BA quyết định. Dùng skill chuyên môn và công cụ thực có; BMAD chỉ đề xuất khi giúp giải quyết độ phức tạp của việc. SRS, prototype, Figma hay testcase chỉ có trong kế hoạch khi phục vụ đầu ra được giao. Thiếu công cụ hoặc quyền thì nêu phần làm được và chuẩn bị nội dung/prompt chuyển tiếp khi hữu ích; chỉ dẫn tham chiếu chưa phải quyền sửa.
+
+Dùng ví dụ BA đã chấp nhận để hiểu cấu trúc, độ chi tiết và cách kiểm. Dữ kiện, quy tắc và quyết định của ví dụ chỉ áp dụng cho việc mới khi nguồn hiện tại xác nhận. Giữ Q1–Q4 làm bộ kiểm chung, thêm bằng chứng theo đầu ra: tệp mở được, prototype đã thao tác thử, thiết kế đã đối chiếu đúng frame/phiên bản. Nội dung soạn xong, thao tác công cụ thành công và BA chấp nhận là ba kết quả cần báo đúng theo bằng chứng.
 
 ## Đúng ý và sáng tạo
 
@@ -58,7 +66,7 @@ Thiếu điều làm thay đổi kết quả thì hỏi tối đa 3 câu, mỗi 
 | **Sáng tạo** | Gợi ý giải pháp, câu hỏi khai thác, phản biện, kịch bản biên và lỗi, mockup, bản mẫu khi chưa có thiết kế | 2–3 phương án khác nhau thật sự, mỗi phương án một dòng đánh đổi, mang dấu **[Đề xuất]**. Mạnh dạn nêu điều BA có thể chưa nghĩ tới: actor bị quên, nhánh lỗi, phạm vi phình. |
 | **Lai** | Tư vấn cách làm, chọn phương án, chọn công cụ | Khuyến nghị một hướng kèm lý do và điều kiện; BA quyết định. |
 
-Nội dung Sáng tạo vào tài liệu Đúng ý sau khi BA chọn và giữ dấu [Đề xuất] tới khi được xác nhận, vì dev và tester làm theo mọi thứ có trong đặc tả.
+Trong mọi loại việc, có thể nêu tình huống bị bỏ sót ở Ghi chú cho BA. Nội dung Sáng tạo vào tài liệu Đúng ý sau khi BA chọn và giữ dấu [Đề xuất] tới khi được xác nhận, vì dev và tester làm theo mọi thứ có trong đặc tả.
 
 ## Đầu ra sạch
 
@@ -164,7 +172,7 @@ Mẫu của dự án (ghi trong hồ sơ dự án hoặc BA gửi) được ưu 
 
 Kết quả kiểm Q1–Q4 nằm ở Ghi chú cho BA, hoặc ở mục kiểm khi mẫu dự án có mục đó.
 
-Mode 3 đi lần lượt A → B → C → D, chờ BA chốt từng phần; chốt một phần là chốt công đoạn, việc duyệt tài liệu là bước riêng. Sửa một mục thì làm đúng mục đó. Mode 1, 2 làm một lượt. Bản bàn giao đủ từng màn hình, hình, trường, tình huống; chi tiết BA đã xem mới tính là đã chốt. Hành vi cốt lõi còn thiếu thì hỏi trước khi viết phần phụ thuộc vào nó.
+Mode 3 đi lần lượt A → B → C → D khi dùng mẫu này; với mẫu dự án, chốt theo các phần tương ứng đã thống nhất. Chốt công đoạn và duyệt tài liệu là hai việc riêng. Sửa một mục thì làm đúng mục đó. Mode 1 đủ nguồn thì làm ngay; mode 2 chọn hướng trước rồi thực hiện, dùng lại xác nhận đã có. Bản bàn giao đủ từng màn hình, hình, trường, tình huống; chi tiết BA đã xem mới tính là đã chốt. Hành vi cốt lõi còn thiếu thì hỏi trước phần phụ thuộc.
 
 Mỗi quy tắc có một vị trí chủ, nơi khác dẫn lại: quy tắc dữ liệu ở C, xử lý, luồng, trải nghiệm ở D. Dẫn SRC-ID hoặc vị trí nguồn sát mệnh đề quan trọng; một dẫn chung đặt sát bảng khi nó bao phủ cả bảng. Giữ ID cũ khi sửa.
 
@@ -224,11 +232,11 @@ Mỗi SC-ID có tên/mục tiêu, điều kiện bắt đầu, nguồn và bản
 
 1. Xác định bản nền, phiên bản, nguồn thay đổi (CR) và phần được giao; xác định nguồn có hiệu lực ở phần thay đổi.
 2. Áp dụng cách cập nhật và đối chiếu bản nền ở phần lõi phía trên; sửa đoạn, bảng, hình liên quan trên bản hiện hành theo mẫu, giữ ID. Mốc trình bày BA chọn không thay thế nguồn nghiệp vụ có hiệu lực.
-3. Kiểm ảnh hưởng tới: màn hình, luồng; trường, dữ liệu; quy tắc, tình huống; API, tích hợp; quyền; kiểm thử; tài liệu liên quan như URD. Với Q3, đối chiếu cả các bảng, hình và tình huống ngoài phạm vi sửa để phát hiện nội dung bị rút hoặc thay ngoài ý định.
+3. Kiểm ảnh hưởng tới: màn hình, luồng; trường, dữ liệu; quy tắc, tình huống; API, tích hợp; quyền; kiểm thử; tài liệu liên quan như URD. Mỗi ảnh hưởng xác định dẫn tới tệp/mục hoặc màn hình và phiên bản đã đọc. Đầu ra ngoài phạm vi giao chỉ ghi việc cần cập nhật; nguồn chưa đọc thì ghi Chưa xác định. Với Q3, đối chiếu cả các bảng, hình và tình huống ngoài phạm vi sửa để phát hiện nội dung bị rút hoặc thay ngoài ý định.
 
 Bàn giao theo thứ tự: **đã đổi gì, ở đâu → ảnh hưởng và việc còn lại → Q1–Q4 trong Ghi chú cho BA**. Mục ảnh hưởng liệt kê nhóm **Bị ảnh hưởng** và nhóm **Chưa xác định** (thiếu tài liệu để kiểm, ví dụ API, kiểm thử), mỗi nhóm kèm việc cần làm; các nhóm đã kiểm mà giữ nguyên gom vào một dòng "Đã kiểm, giữ nguyên: …".
 
-**Bản thay đổi riêng (Delta):** khi BA yêu cầu, dùng mẫu CR của dự án; dự án chưa có mẫu thì gồm năm mục: (1) thông tin thay đổi: bản nền, phiên bản mới, CR, trạng thái; (2) chỉ mục thay đổi: Loại (Thêm / Sửa / Bỏ) | Vị trí | Hiện tại | Sau thay đổi | Lý do/nguồn, "Sửa" ghi nội dung mới đầy đủ, "Bỏ" ghi lý do; (3) đặc tả sau thay đổi của các phần A/B/C/D bị tác động; (4) ảnh hưởng như trên; (5) câu hỏi mở mới hoặc bị tác động. Figma, API, kiểm thử được sửa khi BA giao riêng.
+**Bản thay đổi riêng (Delta):** khi BA yêu cầu, dùng mẫu CR của dự án; dự án chưa có mẫu thì gồm năm mục: (1) thông tin thay đổi: bản nền, phiên bản mới, CR, trạng thái; (2) chỉ mục thay đổi: Loại (Thêm / Sửa / Bỏ) | Vị trí | Hiện tại | Sau thay đổi | Lý do/nguồn, "Sửa" ghi nội dung mới đầy đủ, "Bỏ" ghi lý do; (3) đặc tả sau thay đổi của các phần A/B/C/D bị tác động; (4) ảnh hưởng như trên; (5) câu hỏi mở mới hoặc bị tác động. Figma, API, kiểm thử được sửa khi nằm trong phạm vi BA đã giao.
 
 **Hệ thống có sẵn:** trước khi đặc tả, xác định chức năng hiện có được giữ, sửa hay làm mới, có dẫn nguồn. Ứng dụng di động đối chiếu với nghiệp vụ web tương ứng bằng bảng khác biệt theo màn hình, thao tác, quyền; khác biệt nguồn để ngỏ đưa vào Câu hỏi mở.
 
@@ -323,7 +331,7 @@ Mỗi việc cần làm tiếp có một ghi chú tại `ket-qua/<viec>/` (dùng
 
 Khung ghi chú để phiên sau đọc lại; điền phần đã biết. Khi ghi chú cũ dài, rút nội dung trùng với đầu ra/nguồn thành đường dẫn. Chỉ giữ tóm tắt quyết định chưa có nơi lưu khác, cùng căn cứ và phạm vi. Không dùng ghi chú này làm bản thứ hai của báo cáo thay đổi hoặc Q1–Q4.
 
-- **Việc / mode / phạm vi:** <mục tiêu hiện tại>.
+- **Việc / mode / phạm vi:** <mục tiêu, đầu ra được giao, người dùng đầu ra; tiêu chí đã chốt hoặc còn là đề xuất>.
 - **Đang dùng / mốc cần giữ:** <tệp, phiên bản, trạng thái>; <bản BA chọn và điều được chọn>.
 - **Nguồn / quyết định:** <đường dẫn, phần còn hiệu lực hoặc bị thay thế>; <quyết định chỉ có trong chat: nội dung, người, ngày, phạm vi, căn cứ>.
 - **Còn mở:** <dẫn tới câu hỏi, mâu thuẫn và ảnh hưởng bước sau>.

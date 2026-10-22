@@ -4,9 +4,9 @@
 
 **Nói việc cần làm → gửi nguồn → AI làm và tự kiểm → BA chốt → lưu đúng việc để dùng tiếp.**
 
-Skill dùng chung cho Business Analyst. Cài vào dự án, mọi yêu cầu đi qua **ba-advisor**: AI làm việc như một người dùng AI thành thạo thay bạn, đọc đúng nguồn, hỏi đúng chỗ thiếu kèm đáp án đề xuất, tách chỗ cần đúng ý với chỗ được sáng tạo, trả đầu ra sạch để dán thẳng vào tài liệu, tự kiểm Q1–Q4 và ghi nhớ góp ý qua hồ sơ dự án.
+Skill dùng chung cho Business Analyst. Cài vào dự án, mọi yêu cầu đi qua **ba-advisor**: AI đọc nguồn, làm rõ điểm ảnh hưởng đến kết quả, chọn cách thực hiện theo đầu ra được giao, trả nội dung kèm căn cứ và tự kiểm Q1–Q4. BA giữ quyền quyết định; hồ sơ dự án giúp tiếp tục đúng việc ở phiên sau.
 
-**v2.2.0 · Cập nhật 16/10/2026:** giữ đúng bản hiện hành, phạm vi từng việc và cách trình bày BA đã chọn khi sửa hoặc tiếp tục phiên.
+**v2.2.0 · Cập nhật 23/10/2026:** hỏi đúng quyết định, chọn công đoạn theo đầu ra, truy được ảnh hưởng khi cập nhật và thử cách dùng với BA khác.
 
 Tải về: [Bộ đầy đủ v2.2.0](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v2.2.0/ba-advisor-team-v2.2.0.zip) · [ZIP skill v2.2.0 cho Claude](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v2.2.0/ba-advisor.zip) · [Thông tin phát hành v2.2.0](https://github.com/khoantdse1212/ba-advisor-team/releases/tag/v2.2.0).
 
@@ -64,7 +64,7 @@ Thêm "mode 2" để chọn hướng trước, "mode 3" để làm và duyệt t
 | `làm tiếp A` | Đọc ghi chú và bản hiện hành của việc A; thiếu tên việc mà có nhiều khả năng thì hỏi |
 | `gọn` | Rút phần ghi chú, giữ nội dung bàn giao |
 
-Mỗi câu trả lời có hai phần: **Nội dung bàn giao** để dán vào tài liệu, với các dấu [Cần xác nhận], [Mâu thuẫn], [Đề xuất]; và **Ghi chú cho BA** gồm câu hỏi, kết quả tự kiểm, thao tác đã làm. BA đối chiếu bằng bốn câu chung và là người xác nhận nội dung bàn giao:
+Khi có sản phẩm bàn giao, câu trả lời gồm **Nội dung bàn giao** để dán vào tài liệu, với các dấu [Cần xác nhận], [Mâu thuẫn], [Đề xuất] khi cần; và **Ghi chú cho BA** nếu có câu hỏi, kết quả kiểm hoặc thao tác cần báo. BA đối chiếu bằng bốn câu chung và là người xác nhận nội dung bàn giao:
 
 | | Câu kiểm |
 |---|---|
@@ -97,6 +97,23 @@ SRC-M1 — Trao đổi danh sách vùng (dữ liệu giả lập, 13/10/2026)
 
 Kết quả tốt có: điều đã thống nhất (chưa làm nhập Excel); việc Phương gửi mẫu cột ngày 16/10/2026; việc Mai tổng hợp câu hỏi với hạn chưa xác định; câu hỏi về phạm vi xuất, API, ý nghĩa của 5.000 dòng và việc nào cần "chốt trước thứ Sáu". Phần bàn giao gọn, đủ để gửi khách hàng.
 
+### Dùng thử trên một công việc của team
+
+Chọn việc đang cần làm, chẳng hạn cập nhật SRS theo góp ý mới, trả lời câu hỏi Dev hoặc tổng hợp biên bản. Với cập nhật SRS, gửi **bản hiện hành + góp ý/CR + mẫu + quyết định đã chốt**, rồi giao:
+
+```text
+Cập nhật SRS theo CR đã xác nhận này để Dev và Tester dùng.
+Giữ cấu trúc và phần ngoài thay đổi; chỉ rõ mục đã sửa và căn cứ.
+Đối chiếu ảnh hưởng với các tài liệu tôi gửi; đầu ra khác chưa được giao sửa thì ghi việc cần làm.
+Thiếu thông tin làm thay đổi nghiệp vụ thì hỏi trước phần phụ thuộc.
+```
+
+Đầu ra cần thấy: bản cập nhật, vị trí và nguồn thay đổi, phần cần giữ đã đối chiếu, phần ảnh hưởng còn chưa xử lý. Một đề nghị chưa được chốt trong biên bản vẫn phải giữ đúng trạng thái.
+
+Để đánh giá khả năng dùng chung, có thể thử trong hai tuần: người quản lý làm một mẫu, sau đó hai BA khác dùng trên việc tương đương bằng hướng dẫn hiện có. Ghi ba điều: **tổng thời gian gồm kiểm/sửa, lỗi quan trọng còn sót, lần cần người hỗ trợ**. Đây là cách thử đề xuất, chưa phải kết quả đo của repo; thiếu dữ liệu cách cũ thì chưa kết luận tỷ lệ tiết kiệm.
+
+Khi sửa skill hoặc đổi model, thử lại các trường hợp từng sai và một việc mới. Cách chuẩn bị nguồn, giữ đáp án riêng và kiểm khả năng dùng lại nằm ở [Thử trước khi dùng rộng](skills/ba-advisor/references/tao-skill.md#thử-trước-khi-dùng-rộng). Chỉ đóng gói thành skill khi có cách làm chuyên môn cần dùng lại; thêm skill không tự bảo đảm chất lượng.
+
 ## Thư mục dự án
 
 ```text
@@ -117,4 +134,4 @@ Hồ sơ dự án và xác nhận môi trường lưu tại máy, tách khỏi r
 | `chat/` | Bản gộp cho công cụ chưa hỗ trợ thư mục skill |
 | `CHANGELOG.md` | Lịch sử thay đổi theo loại góp ý |
 
-Phiên bản **v2.2.0** · Cập nhật 16/10/2026 · Giấy phép MIT.
+Phiên bản **v2.2.0** · Cập nhật 23/10/2026 · Giấy phép MIT.

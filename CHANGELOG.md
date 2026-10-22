@@ -2,6 +2,16 @@
 
 Các thay đổi đáng chú ý của BA Advisor Team. Mỗi thay đổi ghi loại góp ý dẫn tới nó: nguồn, cách làm, mẫu hoặc cách kiểm.
 
+## [2.2.0] — Cập nhật 2026-10-23
+
+- **Cách làm:** phân biệt mục đích với phương án được đề nghị; hỏi quyết định có tác động lớn bằng lựa chọn dễ hiểu, không khuyến nghị thay nghiệp vụ chưa biết và không hỏi lại phần đã chốt.
+- **Cách làm:** chọn công đoạn theo đầu ra, nguồn và công cụ thực có; dùng ví dụ tốt đúng phạm vi, không mang nghiệp vụ cũ sang việc mới. Làm rõ mode 2 và cách dùng mẫu dự án trong mode 3.
+- **Cách kiểm:** ảnh hưởng thay đổi dẫn tới vị trí/phiên bản đã đọc; phân biệt nội dung đã soạn, thao tác đã thực hiện và BA đã chấp nhận.
+- **Cách kiểm:** hướng dẫn thử khi sửa skill/đổi mô hình, có ca mới, lần thử lặp lại và BA khác; ghi thời gian gồm kiểm/sửa, lỗi và lần cần hỗ trợ khi đánh giá hiệu quả.
+- **Mẫu:** README có cách thử một công việc thật trong team; ghi chú tiếp tục giữ đầu ra, người nhận và tiêu chí. Giữ số phiên bản v2.2.0, phân biệt bằng ngày cập nhật hoặc commit.
+
+Đã kiểm cấu trúc, liên kết, đồng bộ bản chat/ZIP và giữ nguyên mẫu A/B/C/D. Hai lượt thử AI độc lập với dữ liệu giả cho thấy cập nhật đúng CR đã xác nhận, giữ phần ngoài thay đổi, chỉ ra đầu ra liên quan chưa sửa và hỏi nguyên nhân trước yêu cầu bỏ trường còn mơ hồ. Đây là kiểm tra có phạm vi, chưa phải so sánh hiệu quả trước/sau; chưa kiểm chứng độ ổn định qua nhiều lần chạy, mọi nền tảng hoặc đợt dùng thử với BA thật.
+
 ## [2.2.0] — Cập nhật 2026-10-16
 
 Giữ số phiên bản theo lựa chọn của chủ repo; nội dung cập nhật trên `main` và hai gói ZIP đính kèm. Tag gốc giữ lịch sử phát hành ban đầu.

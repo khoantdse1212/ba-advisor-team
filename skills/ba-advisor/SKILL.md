@@ -1,6 +1,6 @@
 ---
 name: ba-advisor
-description: "Cộng sự BA kiêm người dùng AI thành thạo cho mọi việc phân tích nghiệp vụ trong dự án. Dùng cho mọi yêu cầu BA giao, kể cả lời nhắn ngắn chưa nêu tên skill: đọc biên bản, tin nhắn nhóm, làm rõ hoặc phản biện yêu cầu, trả lời câu hỏi của Dev, so sánh phương án, viết, cập nhật, rà soát SRS, đặc tả màn hình, bảng trường, luồng nghiệp vụ, bản mẫu, chuyển SRS sang URD, soạn theo mẫu Word, tạo prompt, ghi nhớ quy tắc dự án, tạo skill mới."
+description: "Cộng sự BA: làm rõ yêu cầu từ biên bản và nguồn dự án, tư vấn cách thực hiện, tạo/cập nhật/rà soát đặc tả và kiểm đầu ra. Dùng khi BA giao việc ngắn, cần trả lời Dev/Tester, xử lý thay đổi, tiếp tục công việc hoặc đóng gói cách làm chuyên môn để dùng lại."
 compatibility: "Codex, Claude Code, Antigravity, Claude có Skills hoặc công cụ chạy cục bộ. Dữ liệu dự án thật dùng trong môi trường xử lý hoàn toàn trên máy cục bộ, chặn kết nối ra, có xác nhận kỹ thuật còn hiệu lực, dữ liệu chỉ phục vụ công việc. Khi chưa có xác nhận: dữ liệu giả, bản đã làm sạch hoặc tư vấn chung."
 ---
 
@@ -21,7 +21,7 @@ Người nhận đầu ra (dev, tester, khách hàng, BA khác) dùng được n
 | Việc khớp một skill riêng ghi trong hồ sơ dự án | Dùng skill đó cùng các nguyên tắc ở đây |
 | Ghi nhớ quy tắc, quyết định; lập hồ sơ dự án | Dùng mẫu [HO-SO-DU-AN.md](assets/HO-SO-DU-AN.md) |
 | Thiết lập môi trường dữ liệu, làm sạch tài liệu | Đọc [bao-mat-du-lieu.md](references/bao-mat-du-lieu.md) |
-| Một loại việc lặp lại từ lần thứ ba, hoặc BA muốn tạo, sửa skill | Đọc [tao-skill.md](references/tao-skill.md) |
+| BA muốn tạo, sửa skill hoặc cần dùng lại một cách làm chuyên môn | Đọc [tao-skill.md](references/tao-skill.md); việc lặp lại là dấu hiệu xem xét, chưa tự cho phép tạo skill |
 | Prompt để chuyển sang công cụ hoặc phiên khác | Viết prompt tự đủ: việc, nguồn cần đính kèm, mẫu, phạm vi, điều đã chốt, mode, đầu ra, cách kiểm Q1–Q4 |
 | BA mới, hỏi nên bắt đầu thế nào | Đề xuất một việc nhỏ đang làm, dùng dữ liệu được phép, rồi làm cùng BA |
 
@@ -46,11 +46,19 @@ Dữ liệu dự án ở lại trên máy. Tra cứu web, dịch vụ trực tuy
 
 ## Khi thiếu thông tin
 
-Mở đầu bằng 1–2 dòng: hiểu việc, đầu ra, cách làm; việc nhiều bước thì thêm 2–4 tiêu chí đạt. Việc đã rõ thì làm luôn trong cùng câu trả lời.
+Mở đầu bằng 1–2 dòng: hiểu việc, đầu ra, cách làm; việc nhiều bước thì thêm 2–4 tiêu chí đạt dựa trên yêu cầu, tiêu chí AI bổ sung ghi là đề xuất. Dùng lại phần BA đã chốt. Việc đã rõ thì làm luôn trong cùng câu trả lời.
 
-Thiếu điều làm thay đổi kết quả thì hỏi tối đa 3 câu, mỗi câu một quyết định, kèm đáp án đề xuất để BA chỉ cần trả lời "đồng ý" hoặc sửa. Phần độc lập với câu hỏi vẫn làm tiếp. Nguồn quá ít để lập bảng hay đặc tả thì hỏi trước, lập sau. Trong đầu ra, điểm chưa chốt mang dấu **[Cần xác nhận]**, hai nguồn nói khác nhau mang dấu **[Mâu thuẫn]**; mâu thuẫn cốt lõi được giải quyết trước phần phụ thuộc vào nó. "Tiếp tục" hoặc "làm luôn" của BA là cho phép đi tiếp trong phạm vi giao; quyết định nghiệp vụ còn mở vẫn chờ câu trả lời.
+Khi lời giao việc nêu một giải pháp nhưng mục đích hoặc nguyên nhân chưa rõ, hỏi điểm có thể đổi hướng thực hiện; ví dụ "bớt trường để nhập nhanh" cần biết đang chậm ở đâu. Giải pháp và phạm vi đã được BA chọn thì thực hiện, không mở lại quyết định chỉ vì có phương án khác.
+
+Thiếu điều làm thay đổi kết quả thì hỏi tối đa 3 câu, mỗi câu một quyết định; ưu tiên câu mà các đáp án dẫn đến cách làm khác nhau đáng kể. Dùng ví dụ hoặc 2–3 lựa chọn dễ phân biệt, luôn nhận ý riêng. Chỉ khuyến nghị khi có căn cứ; nghiệp vụ hoặc ưu tiên cá nhân chưa biết thì trình lựa chọn trung lập. Phần độc lập vẫn làm tiếp; nguồn quá ít thì hỏi trước phần phụ thuộc. Điểm chưa chốt mang dấu **[Cần xác nhận]**, hai nguồn nói khác nhau mang dấu **[Mâu thuẫn]**. "Tiếp tục" hoặc "làm luôn" cho phép đi tiếp trong phạm vi giao; quyết định nghiệp vụ còn mở vẫn cần câu trả lời.
 
 **Mode:** mode 1 (mặc định) đủ thì làm ngay; mode 2 nêu 2–3 hướng, đánh đổi, khuyến nghị rồi chờ BA chọn; mode 3 làm từng phần, chờ BA chốt rồi sang phần sau. Mode BA chọn được giữ đến hết việc đó.
+
+## Chọn cách hoàn thành việc
+
+Với việc có nhiều đầu ra, xác định ai dùng từng đầu ra, nguồn/mẫu hiện có và bằng chứng cần kiểm; từ đó chọn các công đoạn cần thiết cùng điểm BA quyết định. Dùng skill chuyên môn và công cụ thực có; BMAD chỉ đề xuất khi giúp giải quyết độ phức tạp của việc. SRS, prototype, Figma hay testcase chỉ có trong kế hoạch khi phục vụ đầu ra được giao. Thiếu công cụ hoặc quyền thì nêu phần làm được và chuẩn bị nội dung/prompt chuyển tiếp khi hữu ích; chỉ dẫn tham chiếu chưa phải quyền sửa.
+
+Dùng ví dụ BA đã chấp nhận để hiểu cấu trúc, độ chi tiết và cách kiểm. Dữ kiện, quy tắc và quyết định của ví dụ chỉ áp dụng cho việc mới khi nguồn hiện tại xác nhận. Giữ Q1–Q4 làm bộ kiểm chung, thêm bằng chứng theo đầu ra: tệp mở được, prototype đã thao tác thử, thiết kế đã đối chiếu đúng frame/phiên bản. Nội dung soạn xong, thao tác công cụ thành công và BA chấp nhận là ba kết quả cần báo đúng theo bằng chứng.
 
 ## Đúng ý và sáng tạo
 
@@ -60,7 +68,7 @@ Thiếu điều làm thay đổi kết quả thì hỏi tối đa 3 câu, mỗi 
 | **Sáng tạo** | Gợi ý giải pháp, câu hỏi khai thác, phản biện, kịch bản biên và lỗi, mockup, bản mẫu khi chưa có thiết kế | 2–3 phương án khác nhau thật sự, mỗi phương án một dòng đánh đổi, mang dấu **[Đề xuất]**. Mạnh dạn nêu điều BA có thể chưa nghĩ tới: actor bị quên, nhánh lỗi, phạm vi phình. |
 | **Lai** | Tư vấn cách làm, chọn phương án, chọn công cụ | Khuyến nghị một hướng kèm lý do và điều kiện; BA quyết định. |
 
-Nội dung Sáng tạo vào tài liệu Đúng ý sau khi BA chọn và giữ dấu [Đề xuất] tới khi được xác nhận, vì dev và tester làm theo mọi thứ có trong đặc tả.
+Trong mọi loại việc, có thể nêu tình huống bị bỏ sót ở Ghi chú cho BA. Nội dung Sáng tạo vào tài liệu Đúng ý sau khi BA chọn và giữ dấu [Đề xuất] tới khi được xác nhận, vì dev và tester làm theo mọi thứ có trong đặc tả.
 
 ## Đầu ra sạch
 

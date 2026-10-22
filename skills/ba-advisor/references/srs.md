@@ -18,7 +18,7 @@ Mẫu của dự án (ghi trong hồ sơ dự án hoặc BA gửi) được ưu 
 
 Kết quả kiểm Q1–Q4 nằm ở Ghi chú cho BA, hoặc ở mục kiểm khi mẫu dự án có mục đó.
 
-Mode 3 đi lần lượt A → B → C → D, chờ BA chốt từng phần; chốt một phần là chốt công đoạn, việc duyệt tài liệu là bước riêng. Sửa một mục thì làm đúng mục đó. Mode 1, 2 làm một lượt. Bản bàn giao đủ từng màn hình, hình, trường, tình huống; chi tiết BA đã xem mới tính là đã chốt. Hành vi cốt lõi còn thiếu thì hỏi trước khi viết phần phụ thuộc vào nó.
+Mode 3 đi lần lượt A → B → C → D khi dùng mẫu này; với mẫu dự án, chốt theo các phần tương ứng đã thống nhất. Chốt công đoạn và duyệt tài liệu là hai việc riêng. Sửa một mục thì làm đúng mục đó. Mode 1 đủ nguồn thì làm ngay; mode 2 chọn hướng trước rồi thực hiện, dùng lại xác nhận đã có. Bản bàn giao đủ từng màn hình, hình, trường, tình huống; chi tiết BA đã xem mới tính là đã chốt. Hành vi cốt lõi còn thiếu thì hỏi trước phần phụ thuộc.
 
 Mỗi quy tắc có một vị trí chủ, nơi khác dẫn lại: quy tắc dữ liệu ở C, xử lý, luồng, trải nghiệm ở D. Dẫn SRC-ID hoặc vị trí nguồn sát mệnh đề quan trọng; một dẫn chung đặt sát bảng khi nó bao phủ cả bảng. Giữ ID cũ khi sửa.
 
@@ -78,11 +78,11 @@ Mỗi SC-ID có tên/mục tiêu, điều kiện bắt đầu, nguồn và bản
 
 1. Xác định bản nền, phiên bản, nguồn thay đổi (CR) và phần được giao; xác định nguồn có hiệu lực ở phần thay đổi.
 2. Áp dụng cách cập nhật và đối chiếu bản nền ở SKILL.md; sửa đoạn, bảng, hình liên quan trên bản hiện hành theo mẫu, giữ ID. Mốc trình bày BA chọn không thay thế nguồn nghiệp vụ có hiệu lực.
-3. Kiểm ảnh hưởng tới: màn hình, luồng; trường, dữ liệu; quy tắc, tình huống; API, tích hợp; quyền; kiểm thử; tài liệu liên quan như URD. Với Q3, đối chiếu cả các bảng, hình và tình huống ngoài phạm vi sửa để phát hiện nội dung bị rút hoặc thay ngoài ý định.
+3. Kiểm ảnh hưởng tới: màn hình, luồng; trường, dữ liệu; quy tắc, tình huống; API, tích hợp; quyền; kiểm thử; tài liệu liên quan như URD. Mỗi ảnh hưởng xác định dẫn tới tệp/mục hoặc màn hình và phiên bản đã đọc. Đầu ra ngoài phạm vi giao chỉ ghi việc cần cập nhật; nguồn chưa đọc thì ghi Chưa xác định. Với Q3, đối chiếu cả các bảng, hình và tình huống ngoài phạm vi sửa để phát hiện nội dung bị rút hoặc thay ngoài ý định.
 
 Bàn giao theo thứ tự: **đã đổi gì, ở đâu → ảnh hưởng và việc còn lại → Q1–Q4 trong Ghi chú cho BA**. Mục ảnh hưởng liệt kê nhóm **Bị ảnh hưởng** và nhóm **Chưa xác định** (thiếu tài liệu để kiểm, ví dụ API, kiểm thử), mỗi nhóm kèm việc cần làm; các nhóm đã kiểm mà giữ nguyên gom vào một dòng "Đã kiểm, giữ nguyên: …".
 
-**Bản thay đổi riêng (Delta):** khi BA yêu cầu, dùng mẫu CR của dự án; dự án chưa có mẫu thì gồm năm mục: (1) thông tin thay đổi: bản nền, phiên bản mới, CR, trạng thái; (2) chỉ mục thay đổi: Loại (Thêm / Sửa / Bỏ) | Vị trí | Hiện tại | Sau thay đổi | Lý do/nguồn, "Sửa" ghi nội dung mới đầy đủ, "Bỏ" ghi lý do; (3) đặc tả sau thay đổi của các phần A/B/C/D bị tác động; (4) ảnh hưởng như trên; (5) câu hỏi mở mới hoặc bị tác động. Figma, API, kiểm thử được sửa khi BA giao riêng.
+**Bản thay đổi riêng (Delta):** khi BA yêu cầu, dùng mẫu CR của dự án; dự án chưa có mẫu thì gồm năm mục: (1) thông tin thay đổi: bản nền, phiên bản mới, CR, trạng thái; (2) chỉ mục thay đổi: Loại (Thêm / Sửa / Bỏ) | Vị trí | Hiện tại | Sau thay đổi | Lý do/nguồn, "Sửa" ghi nội dung mới đầy đủ, "Bỏ" ghi lý do; (3) đặc tả sau thay đổi của các phần A/B/C/D bị tác động; (4) ảnh hưởng như trên; (5) câu hỏi mở mới hoặc bị tác động. Figma, API, kiểm thử được sửa khi nằm trong phạm vi BA đã giao.
 
 **Hệ thống có sẵn:** trước khi đặc tả, xác định chức năng hiện có được giữ, sửa hay làm mới, có dẫn nguồn. Ứng dụng di động đối chiếu với nghiệp vụ web tương ứng bằng bảng khác biệt theo màn hình, thao tác, quyền; khác biệt nguồn để ngỏ đưa vào Câu hỏi mở.
 
