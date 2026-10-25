@@ -21,6 +21,7 @@ RUNTIME = (
 PUBLIC = (
     'README.md', 'CHANGELOG.md', 'LICENSE', '.gitignore',
     'ba-advisor-team-overview.png', 'ba-advisor-team-overview-v2.2.0.png',
+    'ba-advisor-team-overview-v3.0.0.png',
     'evals/README.md', 'evals/cases.json', 'evals/RUBRIC.md',
     'evals/RESULTS-v3.0.0.md', 'evals/example-output-SRS-v1.1.md',
     'scripts/release.py', 'tests/test_release.py',

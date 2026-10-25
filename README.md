@@ -1,5 +1,7 @@
 # BA Advisor Team
 
+![BA Advisor Team v3.0.0: Hiểu đúng việc → Làm đúng đầu ra → Có căn cứ để kiểm. Q1 Đúng, Q2 Đủ, Q3 Khớp, Q4 Dùng được. AI hỗ trợ, BA quyết định.](ba-advisor-team-overview-v3.0.0.png)
+
 **Giao việc như nhờ đồng nghiệp. AI làm đúng nguồn; BA có căn cứ để kiểm.**
 
 Bộ skill tiếng Việt dùng chung cho team BA. Thay vì nhắc lại cách đọc nguồn, theo mẫu và kiểm kết quả trong mỗi prompt, đóng gói cách cộng tác đó thành **một skill `ba-advisor`**. Mục tiêu chính là đầu ra giữa các BA có **cách kiểm và chất lượng nhất quán hơn**, không phải tạo nhiều tài liệu hay giao hết quyết định cho AI.
