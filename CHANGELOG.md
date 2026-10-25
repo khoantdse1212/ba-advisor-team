@@ -2,6 +2,16 @@
 
 Các thay đổi đáng chú ý của BA Advisor Team. Mỗi thay đổi ghi loại góp ý dẫn tới nó: nguồn, cách làm, mẫu hoặc cách kiểm.
 
+## [3.0.0] — 2026-10-25
+
+- **Cách làm:** tổ chức advisor theo ý định giao việc: hỏi/tư vấn/tạo/sửa/rà soát/làm tiếp; lời giao ngắn không đồng nghĩa thiếu mục tiêu hoặc bắt mở SRS.
+- **Đơn giản hóa:** bỏ bộ nhãn Đúng ý/Sáng tạo/Lai chồng với mode; việc nhỏ trả tự nhiên, đầu ra lớn vẫn đủ chi tiết và có căn cứ. Thêm tài liệu chọn cách làm theo tình huống BA, chỉ đọc khi cần.
+- **Cách kiểm:** bộ bốn ca giả lập, đầu vào tách phiếu kiểm; thử độc lập và báo đúng giới hạn, không công bố tỷ lệ tiết kiệm chưa đo.
+- **Phát hành:** công cụ sinh chat và ZIP từ cùng nguồn, kiểm liên kết/metadata/mẫu SRS, bộ test công cụ; tag và ZIP v3 từ cùng commit, không thay release v2.2.
+- **Giữ:** tên skill, ba mode, Q1–Q4, cấu trúc A/B/C/D, ưu tiên mẫu dự án, điều kiện bảo mật dữ liệu thật và hồ sơ hiện có. Không thêm agent bắt buộc, không tự cài framework hay di chuyển dữ liệu dự án.
+
+Chi tiết bằng chứng và phần chưa thử ở [kết quả kiểm v3](evals/RESULTS-v3.0.0.md). Thay đổi lớn ở cách tổ chức, thử và phát hành; không phải cam kết AI hiểu đúng mọi yêu cầu.
+
 ## [2.2.0] — Cập nhật 2026-10-23
 
 - **Cách làm:** phân biệt mục đích với phương án được đề nghị; hỏi quyết định có tác động lớn bằng lựa chọn dễ hiểu, không khuyến nghị thay nghiệp vụ chưa biết và không hỏi lại phần đã chốt.

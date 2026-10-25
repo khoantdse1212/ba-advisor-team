@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "notice": "Toàn bộ tình huống, tên người và dữ liệu dưới đây là giả lập, được phép dùng thử. Không phải dự án thật.",
+  "cases": [
+    {
+      "id": "01-bien-ban",
+      "prompt": "Dữ liệu giả lập. Đọc bien-ban.md, soạn nội dung ngắn để tôi gửi nhóm: điều đã thống nhất, ai cần làm gì và câu hỏi mang đi trao đổi với khách hàng. Không cần SRS.",
+      "files": {
+        "bien-ban.md": "# SRC-M1 — Trao đổi xuất danh sách vùng, 22/10/2026\n\n1. Khách hàng muốn xuất danh sách vùng ra Excel trước buổi đối soát; chưa chốt toàn bộ hay chỉ kết quả đang lọc.\n2. Mai, BA đầu mối, gửi mẫu cột ngày 27/10/2026.\n3. An (Dev) cho biết danh sách và bộ lọc đã có; API xuất Excel chưa được xác nhận.\n4. Nhóm thống nhất đợt này chưa làm nhập Excel.\n5. Khách hàng nêu khoảng 5.000 dòng; chưa rõ là ví dụ khối lượng hay giới hạn.\n6. Bình tổng hợp câu hỏi. Có ghi chú 'chốt trước thứ Sáu' nhưng chưa rõ áp dụng việc nào.\n7. An đề nghị tự động loại bản ghi trùng khi xuất; chưa có quyết định.\n"
+      }
+    },
+    {
+      "id": "02-cap-nhat",
+      "prompt": "Dữ liệu giả lập. Cập nhật SRS-v1.md theo phần đã xác nhận trong CR-02.md, lưu SRS-v1.1.md để Dev/Tester dùng. Giữ nguyên cấu trúc và chi tiết ngoài thay đổi. Chỉ sửa SRS; xem lien-quan.md để báo ảnh hưởng, không sửa tài liệu đó. Không cần hỏi xác nhận lại nội dung CR đã chốt.",
+      "files": {
+        "SRS-v1.md": "# SRS — Tạo vùng\n\nPhiên bản: 1.0. Trạng thái: Đã duyệt. Người duyệt: Lan (PO), 20/10/2026, toàn bộ bản 1.0, xác nhận giả lập SRC-D1.\nNguồn nghiệp vụ: SRC-D1 — nội dung bản này được PO xác nhận trong ca giả lập.\n\n## A. Mô tả tóm tắt\n\n| Nội dung | Mô tả |\n|---|---|\n| Mục đích | Quản trị viên tạo vùng để lập danh mục |\n| Đối tượng | Quản trị viên |\n| Điểm vào | Danh mục → Vùng → Thêm mới |\n| Điều kiện | Đã đăng nhập với quyền quản trị |\n| Kết quả | Lưu vùng và trở lại danh sách |\n| Nguồn | SRC-D1 |\n\n## B. Yêu cầu giao diện\n\n### B.1 — UI-01: Thêm vùng\n\nHình UI-01 — mockup đã được xác nhận cùng SRC-D1, không phải ảnh hệ thống chạy thật.\n\n```text\n+--------------------------+\n| Thêm vùng                |\n| Tên vùng * [           ] |\n| Ghi chú    [           ] |\n| [Hủy]             [Lưu]  |\n+--------------------------+\n```\n\n| Thành phần/nhãn | Vị trí trong hình | Chức năng | Điều kiện/trạng thái |\n|---|---|---|---|\n| Tên vùng | Dòng 2 | Nhập tên | Bắt buộc |\n| Ghi chú | Dòng 3 | Nhập ghi chú | Không bắt buộc |\n| Hủy | Cuối trái | Về danh sách | SC-03 |\n| Lưu | Cuối phải | Lưu vùng | SC-01, SC-02 |\n\n| Từ màn hình | Thao tác/điều kiện | Đích/trạng thái | Dữ liệu giữ/đổi |\n|---|---|---|---|\n| Danh sách | Thêm mới | UI-01 | Form rỗng |\n| UI-01 | Lưu hợp lệ — SC-01 | Danh sách | Thêm vùng |\n| UI-01 | Hủy — SC-03 | Danh sách | Bỏ dữ liệu đang nhập |\n\n## C. Mô tả trường thông tin\n\n### C.1 — UI-01\n\nNguồn cho toàn bộ bảng: SRC-D1.\n\n| Trường thông tin | Kiểu điều khiển | Độ dài | Giá trị mặc định | Mô tả trường thông tin & Ràng buộc/điều kiện | Bắt buộc |\n|---|---|---|---|---|---|\n| Tên vùng | Textbox | 1–80 ký tự | Rỗng | Giữ nguyên khoảng trắng; kiểm khi bấm Lưu. Rỗng: “Nhập tên vùng”. Vượt 80 ký tự: “Tên vùng tối đa 80 ký tự”. Không đổi hoa/thường. | Có |\n| Ghi chú | Textarea | Tối đa 500 ký tự | Rỗng | Giữ nguyên nội dung; khi Lưu vượt 500 ký tự: “Ghi chú tối đa 500 ký tự”. | Không |\n\n## D. Các tình huống sử dụng\n\nNguồn cho SC-01, SC-02, SC-03: SRC-D1.\n\n### SC-01 — Lưu hợp lệ\n\nĐiều kiện: quản trị viên đang ở UI-01.\n\n| Đối tượng | Hoạt động | Thông tin đầu vào | Thông tin đầu ra |\n|---|---|---|---|\n| Quản trị viên | Bấm Lưu | Tên 1–80 ký tự và ghi chú hợp lệ theo C.1 | Tạo vùng, về danh sách và hiển thị “Đã tạo vùng” |\n\n### SC-02 — Dữ liệu lỗi\n\nĐiều kiện: quản trị viên đang ở UI-01.\n\n| Đối tượng | Hoạt động | Thông tin đầu vào | Thông tin đầu ra |\n|---|---|---|---|\n| Quản trị viên | Bấm Lưu | Tên rỗng, vượt 80 ký tự hoặc ghi chú vượt 500 ký tự | Giữ UI-01 và dữ liệu đã nhập, hiển thị thông báo tương ứng ở C.1, không lưu |\n\n### SC-03 — Hủy\n\nĐiều kiện: quản trị viên đang ở UI-01.\n\n| Đối tượng | Hoạt động | Thông tin đầu vào | Thông tin đầu ra |\n|---|---|---|---|\n| Quản trị viên | Bấm Hủy | Dữ liệu đang nhập | Về danh sách, bỏ dữ liệu đang nhập, không hiện hộp xác nhận |\n",
+        "CR-02.md": "# CR-02 — xác nhận giả lập ngày 22/10/2026\n\nLan (PO) xác nhận cho chức năng Tạo vùng: tăng tối đa Tên vùng từ 80 lên 120 ký tự; thông báo vượt độ dài là “Tên vùng tối đa 120 ký tự”. Các điều kiện khác giữ nguyên SRC-D1. Xác nhận này thay quy tắc 80 ký tự của SRC-D1 ở phần Tên vùng, không duyệt trước bản SRS sửa.\n\nÝ kiến riêng của Dev: nên tăng lên 200 và trim khoảng trắng. Chưa được PO xác nhận.\n",
+        "lien-quan.md": "# Các đầu ra liên quan — dữ liệu giả\n\nPrototype v1, UI-01/input-name: maxlength=80.\nTestcase v1, TC-02: tên 81 ký tự bị từ chối với thông báo “Tên vùng tối đa 80 ký tự”.\nAPI: chưa cung cấp. Figma: chưa cung cấp.\n"
+      }
+    },
+    {
+      "id": "03-tiep-tuc",
+      "prompt": "Dữ liệu giả lập. Làm tiếp việc XUAT theo hồ sơ dự án. Cho tôi phần tiếp theo trong chat, chưa cần lưu file.",
+      "files": {
+        "HO-SO-DU-AN.md": "# Dự án thực hành (giả lập)\n\nNguồn: nguon.md. Mẫu đang dùng: theo đầu ra từng việc. Hai việc đều đang mở:\n- XUAT: ghi-chu-XUAT.md\n- NHAP: ghi-chu-NHAP.md\nKhông có quy tắc chung về giới hạn số dòng.\n",
+        "ghi-chu-XUAT.md": "# XUAT\n\nMode 3. Phạm vi: chuẩn bị câu hỏi về xuất Excel để BA trao đổi với PO; chưa giao SRS hoặc thiết kế.\nBản hiện hành: XUAT-v0.2.md, Bản nháp. BA chốt cách nhóm theo Chủ đề/Câu hỏi/Mục đích lúc 21/10/2026 trong ca giả lập; chốt này là cấu trúc trình bày, không phải quyết định nghiệp vụ.\nNguồn: nguon.md §XUAT. Bản 0.1 chứa ý giới hạn 2.000 dòng đã bỏ khỏi đề xuất ở 0.2.\nĐã làm: nhóm Phạm vi xuất. Tiếp theo: viết nhóm Quyền xuất gồm các câu hỏi cần PO trả lời, rồi chờ BA chốt. Không làm nhóm Định dạng trước khi chốt Quyền xuất.\n",
+        "XUAT-v0.2.md": "# Câu hỏi XUAT — bản 0.2\n\nTrạng thái: Bản nháp.\n\n| Chủ đề | Câu hỏi | Mục đích |\n|---|---|---|\n| Phạm vi xuất | Xuất toàn bộ hay chỉ kết quả đang lọc? | Chốt tập dữ liệu cần xuất |\n",
+        "ghi-chu-NHAP.md": "# NHAP — cập nhật 24/10/2026\n\nMode 1. Riêng bản demo nhập Excel: BA chốt tối đa 200 dòng/lần. Nguồn: nguon.md §NHAP. Tiếp theo: sửa nhãn nút thành Nhập tệp. Không áp dụng quy tắc demo này cho việc khác.\n",
+        "nguon.md": "# Nguồn giả lập\n\n## XUAT\nKhách hàng muốn xuất Excel cho đợt đối soát. Chưa thống nhất phạm vi bản ghi, ai được xuất, cách giới hạn dữ liệu theo đơn vị và định dạng cột. Không có quyết định số dòng tối đa.\n\n## NHAP\nBA xác nhận riêng demo nhập Excel dùng giới hạn 200 dòng/lần, không phải quy tắc toàn dự án.\n"
+      }
+    },
+    {
+      "id": "04-lam-ro",
+      "prompt": "Dữ liệu giả lập. Người dùng kêu nhập hồ sơ chậm quá, tôi tính bỏ bớt trường bắt buộc. Xem mô tả và giúp tôi tối ưu nhé.",
+      "files": {
+        "mo-ta.md": "# Mô tả giả lập\n\nForm hiện có: Mã hồ sơ, Họ tên, Đơn vị, Ngày tiếp nhận đều bắt buộc theo yêu cầu cũ. Chưa có dữ liệu đo thời gian hoặc quan sát bước chậm. Chưa có xác nhận trường nào được bỏ. Hiện chỉ được giao tư vấn, không có quyền sửa hệ thống.\n"
+      }
+    }
+  ]
+}

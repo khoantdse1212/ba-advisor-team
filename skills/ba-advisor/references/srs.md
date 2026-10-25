@@ -1,6 +1,6 @@
 # Phần chuyên môn: SRS, URD, luồng, bản mẫu và tài liệu theo mẫu
 
-Đọc khi BA giao tạo, cập nhật, rà soát SRS hoặc đặc tả chức năng, màn hình; lập bảng trường; vẽ luồng, dựng bản mẫu, đối chiếu Figma; chuyển SRS sang URD; soạn vào mẫu Word. Phần này dùng chế độ **Đúng ý** và cách trình bày **Đầu ra sạch** trong SKILL.md.
+Đọc khi BA giao tạo, cập nhật, rà soát SRS hoặc đặc tả chức năng, màn hình; lập bảng trường; vẽ luồng, dựng bản mẫu, đối chiếu Figma; chuyển SRS sang URD; soạn vào mẫu Word. Dùng nguyên tắc nguồn, bàn giao, mode và Q1–Q4 trong SKILL.md; đề xuất chưa xác nhận không trở thành nghiệp vụ đã chốt.
 
 Mẫu của dự án (ghi trong hồ sơ dự án hoặc BA gửi) được ưu tiên: giữ tiêu đề, thứ tự, cột của mẫu đó. Mẫu A/B/C/D dưới đây là mẫu tham khảo của bộ hướng dẫn, dùng khi dự án chưa có mẫu. Mẫu dự án và yêu cầu của BA khác nhau, hoặc mẫu thiếu chỗ cho nội dung cần bàn giao (ví dụ hình màn hình), thì nêu cách áp dụng, chờ BA chốt rồi mới đổi cấu trúc.
 

@@ -22,7 +22,7 @@ Nêu nơi phù hợp kèm lý do; khi BA đã giao tạo hoặc sửa thì làm 
 2. Ai dùng đầu ra, và họ cần đầu ra đúng điều gì.
 3. Những câu BA thường gõ để giao việc này, và những câu gần giống thuộc việc khác.
 4. Kiến thức AI chưa có: mẫu, một ví dụ BA đã chấp nhận, những góp ý BA hay phải sửa và điều kiện áp dụng. Ví dụ chưa được chấp nhận thì ghi rõ, chưa dùng làm đáp án chuẩn.
-5. Phần nào Đúng ý, phần nào Sáng tạo; đầu ra kiểm bằng gì.
+5. Phần nào cần bám nguồn, phần nào được đề xuất; đầu ra kiểm bằng gì.
 
 Trình ngắn phạm vi và tệp cần sửa/tạo. Mode 1 và phạm vi đã rõ thì thực hiện; mode 2/3 dùng điểm chốt tương ứng. Lựa chọn làm thay đổi phạm vi vẫn cần BA quyết định.
 
@@ -68,6 +68,6 @@ Khung trên là gợi ý. Giữ phần làm thay đổi quyết định hoặc c
 4. Nhờ một BA khác thử với hướng dẫn hiện có khi có điều kiện. Ghi lỗi, vị trí và lần cần hỗ trợ; chỉ sửa chỉ dẫn khi xác định vấn đề đến từ skill, thay vì nguồn thiếu, công cụ hoặc môi trường. Có thể rút bỏ quy tắc cũ khi phép thử cho thấy nó không còn cần thiết; chạy lại trường hợp bị ảnh hưởng.
 5. Khi đánh giá hiệu quả, ghi tổng thời gian gồm giao việc/kiểm/sửa, lỗi quan trọng còn sót và lần cần người hỗ trợ. Phân biệt thời gian thực đo với ước tính; thiếu bản so sánh thì chưa kết luận tiết kiệm. Ghi phần chưa thử là **Chưa kiểm chứng**. Skill cài được chưa chứng minh nghiệp vụ đúng hoặc hiệu quả trên mọi nền tảng.
 
-Lưu ca thử và kết quả ở khu vực kiểm thử của người quản lý, tách khỏi gói phân phối và dữ liệu dự án thật. Khi BA giao cài, ghi skill vào mục Skill riêng của hồ sơ dự án để advisor tìm đúng; chỉ báo đã cài khi đã thực hiện.
+Lưu ca thử và kết quả ở khu vực kiểm thử của người quản lý, tách khỏi thư mục skill AI nạp. Repo có thể kèm bộ ca giả lập công khai cho người kiểm; không đưa dữ liệu thật hoặc lịch sử riêng vào đó. Khi BA giao cài, ghi skill vào mục Skill riêng của hồ sơ dự án để advisor tìm đúng; chỉ báo đã cài khi đã thực hiện.
 
 Vị trí cài: Codex và Antigravity dùng `.agents/skills/<ten-skill>/`; Claude Code dùng `.claude/skills/<ten-skill>/`. Mở phiên mới sau khi cài.
