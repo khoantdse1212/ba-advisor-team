@@ -17,6 +17,7 @@ RUNTIME = (
     'SKILL.md', 'agents/openai.yaml', 'assets/HO-SO-DU-AN.md',
     'references/cong-viec-ba.md', 'references/srs.md',
     'references/tao-skill.md', 'references/bao-mat-du-lieu.md',
+    'references/ket-noi.md',
 )
 PUBLIC = (
     'README.md', 'CHANGELOG.md', 'LICENSE', '.gitignore',
@@ -25,7 +26,10 @@ PUBLIC = (
     'evals/README.md', 'evals/cases.json', 'evals/RUBRIC.md',
     'evals/RESULTS-v3.0.0.md', 'evals/example-output-SRS-v1.1.md',
     'scripts/release.py', 'tests/test_release.py',
+    '.codex-plugin/plugin.json', '.agents/plugins/marketplace.json',
+    'skills/ba-setup/SKILL.md', 'evals/RESULTS-v3.1.0.md',
 )
+PLUGIN = 'plugins/ba-advisor-team'
 CHAT = ('chat/BA-ADVISOR-CHAT.md', 'chat/BA-SRS-CHAT.md')
 LINK = re.compile(r'\[[^\]\n]*\]\(([^)\n]+)\)')
 
@@ -61,7 +65,7 @@ def version(root):
 
 
 def chat_bytes(root, srs=False):
-    parts = ['SKILL.md', 'references/cong-viec-ba.md',
+    parts = ['SKILL.md', 'references/cong-viec-ba.md', 'references/ket-noi.md',
              'references/srs.md' if srs else 'references/tao-skill.md',
              'references/bao-mat-du-lieu.md', 'assets/HO-SO-DU-AN.md']
     anchors = {p: 'section-' + str(i) for i, p in enumerate(parts)}
@@ -113,9 +117,60 @@ def runtime_files(root):
     return {'ba-advisor/' + p: read(root, SKILL / p).encode('utf-8') for p in RUNTIME}
 
 
+def plugin_files(root):
+    files = {'skills/' + p: data for p, data in runtime_files(root).items()}
+    for name in ('.codex-plugin/plugin.json', 'skills/ba-setup/SKILL.md', 'LICENSE'):
+        files[name] = read(root, name).encode('utf-8')
+    return files
+
+
+def validate_plugin(root):
+    files = plugin_files(root)
+    manifest = json.loads(files['.codex-plugin/plugin.json'])
+    if manifest.get('name') != 'ba-advisor-team' or manifest.get('version') != version(root):
+        raise ValueError('Phiên bản/tên plugin không khớp')
+    if manifest.get('skills') != './skills/':
+        raise ValueError('Đường dẫn skills plugin không hợp lệ')
+    onboarding = manifest['extensions']['com.openai']['onboardingSkill']
+    if onboarding != './skills/ba-setup/SKILL.md' or onboarding[2:] not in files:
+        raise ValueError('Onboarding không trỏ đúng skill đóng gói')
+    setup, body = metadata(read(root, 'skills/ba-setup/SKILL.md'))
+    if setup.get('name') != 'ba-setup' or f'v{version(root)}' not in body:
+        raise ValueError('Metadata setup không khớp')
+    if any(key in manifest for key in ('mcpServers', 'apps', 'hooks')):
+        raise ValueError('Plugin này chỉ dùng kết nối có sẵn, không thêm dịch vụ/hook')
+    catalog = json.loads(read(root, '.agents/plugins/marketplace.json'))
+    entries = catalog.get('plugins', [])
+    if catalog.get('name') != 'ba-advisor-team' or len(entries) != 1:
+        raise ValueError('Danh mục plugin không khớp')
+    entry = entries[0]
+    if entry.get('name') != manifest['name'] or entry.get('source') != {'source': 'local', 'path': './' + PLUGIN}:
+        raise ValueError('Nguồn cài plugin không khớp')
+    if entry.get('policy', {}).get('installation') != 'AVAILABLE':
+        raise ValueError('Plugin phải để người dùng chọn cài')
+    # Resolve links inside the actual installable payload, not merely the repo.
+    import posixpath
+    for name, data in files.items():
+        if not name.endswith('.md'):
+            continue
+        for match in LINK.finditer(data.decode('utf-8')):
+            target = match[1].split('#')[0]
+            if not target or '://' in target or target.startswith('mailto:'):
+                continue
+            resolved = posixpath.normpath(posixpath.join(posixpath.dirname(name), target))
+            if resolved not in files:
+                raise ValueError('Liên kết thiếu trong plugin: ' + name + ' → ' + target)
+    actual = {p.relative_to(root / PLUGIN).as_posix() for p in (root / PLUGIN).rglob('*') if p.is_file()}
+    if actual - set(files):
+        raise ValueError('Tệp ngoài danh sách trong plugin: ' + ', '.join(sorted(actual - set(files))))
+
+
 def generated(root):
     outputs = {CHAT[0]: chat_bytes(root), CHAT[1]: chat_bytes(root, True),
                'packages/ba-advisor.zip': zip_bytes(runtime_files(root))}
+    payload = plugin_files(root)
+    outputs.update({PLUGIN + '/' + p: data for p, data in payload.items()})
+    outputs['packages/ba-advisor-team-plugin.zip'] = zip_bytes({'ba-advisor-team/' + p: data for p, data in payload.items()})
     for name in CHAT:
         text = outputs[name].decode('utf-8')
         anchors = set(re.findall(r'<a id="([^"]+)"', text))
@@ -145,6 +200,7 @@ def case_data(root):
 
 def validate_sources(root):
     runtime_files(root)
+    validate_plugin(root)
     data, body = metadata(read(root, SKILL / 'SKILL.md'))
     if data.get('name') != 'ba-advisor' or not 1 <= len(data.get('description', '')) <= 1024:
         raise ValueError('Tên/mô tả skill không hợp lệ')
@@ -215,8 +271,10 @@ def build(root, check=False):
         dist.mkdir(exist_ok=True)
         (dist / filename).write_bytes(archive)
         (dist / 'ba-advisor.zip').write_bytes(outputs['packages/ba-advisor.zip'])
+        (dist / 'ba-advisor-team-plugin.zip').write_bytes(outputs['packages/ba-advisor-team-plugin.zip'])
         hashes = ''.join(f'{hashlib.sha256(data).hexdigest()}  {name}\n' for name, data in
-                         ((filename, archive), ('ba-advisor.zip', outputs['packages/ba-advisor.zip'])))
+                         ((filename, archive), ('ba-advisor.zip', outputs['packages/ba-advisor.zip']),
+                          ('ba-advisor-team-plugin.zip', outputs['packages/ba-advisor-team-plugin.zip'])))
         (dist / 'SHA256SUMS.txt').write_text(hashes, encoding='utf-8')
     print(f'OK v{version(root)}: nguồn, mẫu SRS, metadata, liên kết tệp, chat và ZIP. Chưa phải kiểm hành vi AI.')
 

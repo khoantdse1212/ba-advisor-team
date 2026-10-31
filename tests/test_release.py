@@ -104,10 +104,48 @@ class ReleaseTests(unittest.TestCase):
 
     def test_generated_chat_has_embedded_security_and_no_missing_anchors(self):
         for name, data in release.generated(self.root).items():
-            if name.endswith('.md'):
+            if name in release.CHAT:
                 text = data.decode('utf-8')
                 self.assertIn('# Bảo mật dữ liệu dự án', text)
                 self.assertNotIn('(references/', text)
+
+    def test_plugin_payload_and_install_source_match(self):
+        self.build()
+        with zipfile.ZipFile(self.root / 'packages/ba-advisor-team-plugin.zip') as archive:
+            expected = {'ba-advisor-team/' + p: data for p, data in release.plugin_files(self.root).items()}
+            self.assertEqual(set(archive.namelist()), set(expected))
+            for name, data in expected.items():
+                self.assertEqual(archive.read(name), data)
+                self.assertEqual((self.root / 'plugins' / name).read_bytes(), data)
+            self.assertFalse(any('/evals/' in name or '/chat/' in name for name in archive.namelist()))
+
+    def test_stale_installed_source_detected(self):
+        self.build()
+        (self.root / release.PLUGIN / 'skills/ba-advisor/SKILL.md').write_text('stale', encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'chưa đồng bộ'):
+            self.build(check=True)
+
+    def test_onboarding_outside_package_rejected(self):
+        path = self.root / '.codex-plugin/plugin.json'
+        manifest = json.loads(path.read_text(encoding='utf-8'))
+        manifest['extensions']['com.openai']['onboardingSkill'] = '../private/SKILL.md'
+        path.write_text(json.dumps(manifest), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'Onboarding'):
+            self.build()
+
+    def test_private_file_in_install_tree_rejected(self):
+        self.build()
+        (self.root / release.PLUGIN / 'private.md').write_text('fiction', encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'ngoài danh sách'):
+            self.build()
+
+    def test_plugin_version_mismatch_rejected(self):
+        path = self.root / '.codex-plugin/plugin.json'
+        manifest = json.loads(path.read_text(encoding='utf-8'))
+        manifest['version'] = '0.0.0'
+        path.write_text(json.dumps(manifest), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'Phiên bản'):
+            self.build()
 
 
 if __name__ == '__main__':

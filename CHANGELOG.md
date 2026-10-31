@@ -2,6 +2,15 @@
 
 Các thay đổi đáng chú ý của BA Advisor Team. Mỗi thay đổi ghi loại góp ý dẫn tới nó: nguồn, cách làm, mẫu hoặc cách kiểm.
 
+## [3.1.0] — 2026-11-01
+
+- **Cài đặt:** thêm plugin Codex và danh mục cài từ GitHub; gói chạy chỉ gồm Advisor, BA Setup, tài liệu liên quan và giấy phép. Giữ cách cài skill riêng và bản chat.
+- **Cách làm:** chọn công cụ theo đầu ra và khả năng thực có; phân biệt nhìn thấy công cụ, đã kết nối, quyền đọc/ghi và kết quả đã kiểm. Thiếu kết nối thì hướng dẫn phần cần, không ép cài cả bộ.
+- **Khởi đầu:** setup dùng lại hồ sơ, mẫu và task đã có; không chạy lại trong việc thường ngày. Không tự cấp quyền, không đóng gói credential hoặc dữ liệu dự án.
+- **Giữ:** mode 1/2/3, Q1–Q4, mẫu SRS A/B/C/D, điều kiện dữ liệu thật và phiên bản cũ. Plugin không chứa MCP server riêng; dùng kết nối do nền tảng cung cấp.
+
+Phạm vi đã kiểm và giới hạn: [kết quả v3.1](evals/RESULTS-v3.1.0.md).
+
 ## [3.0.0] — 2026-10-25
 
 - **Cách làm:** tổ chức advisor theo ý định giao việc: hỏi/tư vấn/tạo/sửa/rà soát/làm tiếp; lời giao ngắn không đồng nghĩa thiếu mục tiêu hoặc bắt mở SRS.

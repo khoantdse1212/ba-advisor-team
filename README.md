@@ -4,11 +4,43 @@
 
 **Giao việc như nhờ đồng nghiệp. AI làm đúng nguồn; BA có căn cứ để kiểm.**
 
-Bộ skill tiếng Việt dùng chung cho team BA. Thay vì nhắc lại cách đọc nguồn, theo mẫu và kiểm kết quả trong mỗi prompt, đóng gói cách cộng tác đó thành **một skill `ba-advisor`**. Mục tiêu chính là đầu ra giữa các BA có **cách kiểm và chất lượng nhất quán hơn**, không phải tạo nhiều tài liệu hay giao hết quyết định cho AI.
+Bộ hướng dẫn tiếng Việt dùng chung cho team BA, đóng gói thành **plugin Codex cài một lần** hoặc skill/tệp chat cho nền tảng khác. `ba-advisor` hỗ trợ công việc hằng ngày; `ba-setup` giúp bắt đầu sau khi cài. Mục tiêu chính là đầu ra giữa các BA có **cách kiểm và chất lượng nhất quán hơn**, không phải tạo nhiều tài liệu hay giao hết quyết định cho AI.
 
-**v3.0.0 · 25/10/2026** — nhận việc theo mục đích, hỏi ít nhưng đúng chỗ, giữ căn cứ khi cập nhật và có bộ thử giả lập để tự đánh giá.
+**v3.1.0 · 01/11/2026** — thêm plugin, thiết lập ban đầu và chọn công cụ theo khả năng thực có. Hình trên minh họa nguyên lý giữ lại từ v3.0.
 
-[Tải bộ đầy đủ](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v3.0.0/ba-advisor-team-v3.0.0.zip) · [Tải ZIP skill](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v3.0.0/ba-advisor.zip) · [Bản phát hành](https://github.com/khoantdse1212/ba-advisor-team/releases/tag/v3.0.0) · [Lịch sử](CHANGELOG.md)
+[Tải plugin](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v3.1.0/ba-advisor-team-plugin.zip) · [Bộ đầy đủ](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v3.1.0/ba-advisor-team-v3.1.0.zip) · [ZIP skill riêng](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v3.1.0/ba-advisor.zip) · [Bản phát hành](https://github.com/khoantdse1212/ba-advisor-team/releases/tag/v3.1.0) · [Lịch sử](CHANGELOG.md)
+
+## Cài một lần trong Codex
+
+Với Codex có lệnh `plugin`, mở Terminal và chạy hai dòng sau **một lần cho mỗi máy/tài khoản Codex**:
+
+```bash
+codex plugin marketplace add khoantdse1212/ba-advisor-team --ref v3.1.0
+codex plugin add ba-advisor-team@ba-advisor-team
+```
+
+Sau đó mở phiên mới. Trong danh sách plugin chọn **BA Advisor Team**, chạy Setup nếu giao diện có nút này; hoặc chọn skill **ba-setup** thuộc plugin và nói:
+
+```text
+Giúp tôi bắt đầu một việc nhỏ bằng BA Advisor.
+Dùng kết nối tôi đang có, giữ hồ sơ và cấu hình hiện tại.
+Chưa có nguồn dự án thì dùng dữ liệu giả để thử.
+```
+
+Hằng ngày chọn **BA Advisor** thuộc plugin rồi giao việc bằng lời thường; không cần gửi lại bộ hướng dẫn hoặc setup lại mỗi chat. Việc mới vẫn cần chỉ đúng nguồn/hồ sơ. Plugin không tự nhớ tất cả phiên và không bảo đảm luôn tự được chọn; nếu chưa thấy nó hoạt động, chọn đích danh trong danh sách skill/plugin.
+
+Không quen Terminal: gửi AI có quyền thao tác máy đoạn dưới để cài giúp. Nếu máy không nhận lệnh `codex`, dùng bản Codex hỗ trợ plugin hoặc cách skill riêng ở phần sau; không sửa đường dẫn hệ thống bằng phỏng đoán.
+
+```text
+Cài plugin BA Advisor Team từ khoantdse1212/ba-advisor-team,
+ghim bản v3.1.0 theo README. Giữ các plugin và cấu hình khác.
+Nếu có ba-advisor cũ, chỉ rõ bản đang dùng và khác biệt,
+không xóa/ghi đè bản tùy chỉnh. Kiểm tra cài thành công rồi hướng dẫn tôi mở phiên mới.
+```
+
+**Cài plugin ≠ kết nối tài khoản.** Plugin này gói cách làm và chọn công cụ; không chứa MCP server riêng, không tự đăng nhập Drive/Figma và không tự tăng quyền. Advisor tìm khả năng host đang cung cấp, chỉ dùng kết nối cần cho việc được giao. Thiếu thì hướng dẫn bổ sung hoặc làm phần độc lập trước. Các tài khoản cần đăng nhập/cấp quyền riêng khi nền tảng yêu cầu. Điều kiện dữ liệu dự án ở dưới vẫn áp dụng.
+
+Đây là **danh mục cài từ repo của nhóm**, chưa phải chứng nhận hoặc niêm yết trong kho plugin công khai của OpenAI. Cách đóng gói theo [hướng dẫn plugin Codex](https://developers.openai.com/plugins/build/plugins); phạm vi chạy đã kiểm ở [kết quả v3.1](evals/RESULTS-v3.1.0.md).
 
 ## Repo giúp gì trong việc thật?
 
@@ -26,7 +58,7 @@ Skill không tự mở được mọi hệ thống, không tự nhớ mọi phi�
 
 ## Bắt đầu trong một việc nhỏ
 
-### 1. Chọn cách nạp
+### 1. Nếu đã cài plugin, chuyển sang bước 2; nền tảng khác chọn cách nạp
 
 - **Công cụ có thư mục skill:** tải bộ đầy đủ, lấy nguyên thư mục `skills/ba-advisor/`, gồm cả references và assets. Đặt theo bảng bên dưới.
 - **Claude có chức năng tải Skills:** tải `ba-advisor.zip` ở release, thêm qua chức năng quản lý Skills và bật. Không tải ZIP toàn repo vào ô cài một skill.
@@ -41,7 +73,7 @@ Skill không tự mở được mọi hệ thống, không tự nhớ mọi phi�
 Trong công cụ có thể thao tác tệp, bạn cũng có thể gửi:
 
 ```text
-Giúp tôi thiết lập ba-advisor v3.0.0 từ repo
+Giúp tôi thiết lập skill riêng ba-advisor v3.1.0 từ repo
 https://github.com/khoantdse1212/ba-advisor-team cho dự án này theo README.
 Giữ cấu hình hiện có, dùng tất cả tệp từ cùng bản phát hành.
 Nếu có skill cũ khác nội dung, báo khác biệt trước khi thay;
@@ -108,8 +140,12 @@ Chưa xác nhận thì dùng dữ liệu giả, bản đã làm sạch được 
 | Phần | Mục đích |
 |---|---|
 | `skills/ba-advisor/` | Skill cài đặt: lõi cộng tác và tài liệu chuyên môn chỉ đọc khi cần |
+| `skills/ba-setup/` | Hướng dẫn thiết lập lần đầu, dùng lại hồ sơ và công cụ đang có |
+| `.codex-plugin/`, `.agents/plugins/` | Khai báo plugin và danh mục cài từ repo |
+| `plugins/ba-advisor-team/` | Bản cài sinh từ nguồn; chỉ chứa nội dung cần chạy, không sửa tay |
 | `chat/` | Bản gộp sinh từ nguồn, cho công cụ chỉ nhận tệp |
 | `packages/ba-advisor.zip` | Một skill đóng gói, cùng nội dung với thư mục skill |
+| `packages/ba-advisor-team-plugin.zip` | Plugin gọn để phân phối; không gồm bộ thử, chat hoặc dữ liệu dự án |
 | `evals/` | Ca giả lập và phiếu kiểm cho người đánh giá; **không cài vào skill** |
 | `scripts/`, `tests/` | Người quản lý kiểm cấu trúc, đồng bộ chat và đóng gói; BA dùng hằng ngày không cần chạy |
 | `CHANGELOG.md`, `LICENSE` | Lịch sử và giấy phép MIT |
@@ -120,6 +156,12 @@ Giữ tên `ba-advisor`, Q1–Q4, ba mode, điều kiện dữ liệu và mẫu 
 
 v3 dùng tag, mã nguồn và ZIP từ cùng một commit phát hành; không ghi đè tài sản release cũ. v2.2.0 và lịch sử vẫn được giữ để đối chiếu/quay lại. Hai hình overview cũ trong repo là tư liệu lịch sử, không phải sơ đồ tính năng v3.
 
+### Từ skill v3.0 sang plugin v3.1
+
+Hồ sơ, mẫu và đầu ra cũ giữ nguyên. Cài plugin theo hướng dẫn trên, chọn đúng Advisor thuộc plugin để thử. Nếu từng cài skill riêng có cùng tên, so khác biệt trước; chỉ chuyển bản cũ ra ngoài thư mục tự nạp khi bạn quyết định dùng plugin thay thế. Không trộn hai phiên bản để đánh giá kết quả.
+
+Bản cài được ghim theo tag để cả team dùng cùng nguồn. Khi nhóm chọn bản mới, chạy lại lệnh thêm marketplace với tag mới, sau đó `codex plugin add ba-advisor-team@ba-advisor-team` và kiểm phiên bản. Refresh marketplace đang ghim tag không tự nâng lên tag khác; cài một lần không đồng nghĩa tự cập nhật mọi máy. `codex plugin list --marketplace ba-advisor-team --json` giúp kiểm trạng thái; xem cả manifest phiên bản và thử gọi skill nếu cần xác nhận bản nạp.
+
 ### Dành cho người quản lý
 
 ```bash
@@ -128,7 +170,7 @@ python3 scripts/release.py check
 python3 -m unittest discover -s tests -v
 ```
 
-Python 3, không cài thư viện ngoài. `build` sinh chat, ZIP skill, bộ đầy đủ và SHA256 trong `dist/`; `check` không sửa tệp. Chỉ sửa nguồn trong `skills/`, không sửa chat/ZIP bằng tay. Đóng gói theo danh sách cho phép, không gom cả workspace. Kiểm cấu trúc/ZIP không chứng minh hành vi AI; xem [cách thử](evals/README.md) và [kết quả có giới hạn của v3](evals/RESULTS-v3.0.0.md).
+Python 3, không cài thư viện ngoài. `build` sinh chat, thư mục cài plugin, ZIP plugin/skill, bộ đầy đủ và SHA256 trong `dist/`; `check` không sửa tệp. Sửa nguồn trong `skills/` và manifest tại `.codex-plugin/plugin.json`, không sửa `plugins/`, chat hoặc ZIP bằng tay. Đóng gói theo danh sách cho phép, không gom cả workspace. Kiểm cấu trúc/ZIP không chứng minh hành vi AI; xem [cách thử](evals/README.md), [kết quả v3.0](evals/RESULTS-v3.0.0.md) và [kết quả v3.1](evals/RESULTS-v3.1.0.md).
 
 Góp ý nên kèm lời giao việc, nguồn giả/làm sạch, kết quả thực tế và điều mong đợi. Sửa đầu ra trước; chỉ sửa skill khi lỗi thuộc cách làm dùng chung. Không gửi dữ liệu khách hàng qua issue public.
 

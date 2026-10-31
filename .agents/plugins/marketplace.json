@@ -1,0 +1,10 @@
+{
+  "name": "ba-advisor-team",
+  "interface": {"displayName": "BA Advisor Team"},
+  "plugins": [{
+    "name": "ba-advisor-team",
+    "source": {"source": "local", "path": "./plugins/ba-advisor-team"},
+    "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+    "category": "Productivity"
+  }]
+}

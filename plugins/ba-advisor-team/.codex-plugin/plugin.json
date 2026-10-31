@@ -1,0 +1,21 @@
+{
+  "name": "ba-advisor-team",
+  "version": "3.1.0",
+  "description": "Cộng sự AI cho BA: hiểu việc, dùng nguồn và công cụ đang có, bàn giao có căn cứ để kiểm.",
+  "author": {"name": "Nguyễn Thanh Đăng Khoa"},
+  "license": "MIT",
+  "repository": "https://github.com/khoantdse1212/ba-advisor-team",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "BA Advisor Team",
+    "shortDescription": "Giao việc tự nhiên, dùng đúng nguồn và công cụ",
+    "longDescription": "Thiết lập ban đầu với BA Setup; làm việc hằng ngày với BA Advisor. Tận dụng kết nối sẵn có, ưu tiên mẫu dự án và kiểm Q1–Q4. Tài khoản và quyền truy cập do người dùng quản lý.",
+    "developerName": "Nguyễn Thanh Đăng Khoa",
+    "category": "Productivity",
+    "websiteURL": "https://github.com/khoantdse1212/ba-advisor-team",
+    "defaultPrompt": ["Giúp tôi thiết lập BA Advisor cho một việc nhỏ.", "Đọc nguồn được phép dùng và giúp tôi hoàn thành công việc này, kiểm bằng Q1–Q4."]
+  },
+  "extensions": {
+    "com.openai": {"onboardingSkill": "./skills/ba-setup/SKILL.md"}
+  }
+}

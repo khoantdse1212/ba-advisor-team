@@ -4,7 +4,7 @@ description: "Cộng sự BA: từ lời giao việc và nguồn dự án, làm 
 compatibility: "Codex, Claude Code, Antigravity, Claude có Skills hoặc công cụ chạy cục bộ. Dữ liệu dự án thật dùng trong môi trường xử lý hoàn toàn trên máy cục bộ, chặn kết nối ra, có xác nhận kỹ thuật còn hiệu lực, dữ liệu chỉ phục vụ công việc. Khi chưa có xác nhận: dữ liệu giả, bản đã làm sạch hoặc tư vấn chung."
 ---
 
-# BA Advisor — v3.0.0
+# BA Advisor — v3.1.0
 
 Giúp BA biến lời giao việc thành kết quả người nhận dùng được: hiểu đích đến, đọc đúng nguồn, chọn cách làm vừa đủ, tạo đầu ra và chỉ ra căn cứ để kiểm. BA quyết định nghiệp vụ, phạm vi, chất lượng và gu. Skill hướng dẫn cách cộng tác, không phải phần mềm tự vận hành hoặc bằng chứng rằng AI luôn đúng.
 
@@ -56,11 +56,14 @@ Chỉ đọc phần liên quan, không nạp tất cả tài liệu mỗi lần:
 | Biên bản → yêu cầu; trả lời Dev; chọn phương án; việc nhiều đầu ra; prompt chuyển tiếp | [cong-viec-ba.md](references/cong-viec-ba.md) — chọn đúng tình huống |
 | Tạo/cập nhật/rà soát SRS, bảng trường, URD, luồng, prototype, đối chiếu thiết kế, tài liệu theo mẫu | [srs.md](references/srs.md); ưu tiên mẫu dự án, A/B/C/D là mẫu kèm sẵn |
 | Việc đã có skill chuyên môn của dự án | Đọc skill đó; chuyển nguồn, mode và quyết định hiện có, không setup lại |
+| Cần lấy nguồn hoặc tạo/sửa đầu ra qua công cụ, connector; thiếu kết nối hoặc quyền | [ket-noi.md](references/ket-noi.md) — chọn theo khả năng thực có, kiểm kết quả thao tác |
 | Lưu hồ sơ hoặc tiếp tục nhiều phiên | [HO-SO-DU-AN.md](assets/HO-SO-DU-AN.md); dùng cấu trúc đang có trước |
 | Thiết lập môi trường dữ liệu hoặc làm sạch | [bao-mat-du-lieu.md](references/bao-mat-du-lieu.md) |
 | Được giao tạo/sửa skill hoặc tư vấn đóng gói cách làm | [tao-skill.md](references/tao-skill.md) |
 
 Nhiều đầu ra: chọn thứ tự theo phụ thuộc, nguồn/mẫu, người nhận và công cụ thực có. SRS, prototype, Figma, testcase chỉ vào kế hoạch khi phục vụ đầu ra được giao. BMAD là lựa chọn khi độ phức tạp thật sự cần, không phải đường bắt buộc. Skill chuyên môn hướng dẫn cách làm; công cụ mới thực hiện thao tác. Không có công cụ/quyền thì giao phần có thể làm và prompt chuyển tiếp khi hữu ích; không giả đã thực hiện.
+
+Khi dùng qua plugin, BA Setup chỉ phục vụ cài lần đầu hoặc thay đổi môi trường/dự án theo yêu cầu. Việc thường ngày đi thẳng vào Advisor; không chạy lại setup, không ép kiểm toàn bộ kết nối. Cài plugin không tự kết nối tài khoản, tăng quyền hoặc cho phép đưa dữ liệu thật ra ngoài.
 
 ## 5. Dữ liệu dự án
 

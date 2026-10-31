@@ -1,4 +1,4 @@
-# BA SRS — bản chat v3.0.0
+# BA SRS — bản chat v3.1.0
 
 Bản sinh tự động từ cùng nguồn với skill; không sửa trực tiếp. Gửi tệp này đầu phiên và yêu cầu AI dùng như hướng dẫn cho việc được giao. Chỉ nạp một bản chat; không cần nạp cả bản Advisor và SRS.
 
@@ -6,7 +6,7 @@ Các phần đã gộp ở dưới. Nếu công việc cần tài liệu chỉ c
 
 <a id="section-0"></a>
 
-# BA Advisor — v3.0.0
+# BA Advisor — v3.1.0
 
 Giúp BA biến lời giao việc thành kết quả người nhận dùng được: hiểu đích đến, đọc đúng nguồn, chọn cách làm vừa đủ, tạo đầu ra và chỉ ra căn cứ để kiểm. BA quyết định nghiệp vụ, phạm vi, chất lượng và gu. Skill hướng dẫn cách cộng tác, không phải phần mềm tự vận hành hoặc bằng chứng rằng AI luôn đúng.
 
@@ -56,13 +56,16 @@ Chỉ đọc phần liên quan, không nạp tất cả tài liệu mỗi lần:
 | Khi cần | Đọc/dùng |
 |---|---|
 | Biên bản → yêu cầu; trả lời Dev; chọn phương án; việc nhiều đầu ra; prompt chuyển tiếp | [cong-viec-ba.md](#section-1) — chọn đúng tình huống |
-| Tạo/cập nhật/rà soát SRS, bảng trường, URD, luồng, prototype, đối chiếu thiết kế, tài liệu theo mẫu | [srs.md](#section-2); ưu tiên mẫu dự án, A/B/C/D là mẫu kèm sẵn |
+| Tạo/cập nhật/rà soát SRS, bảng trường, URD, luồng, prototype, đối chiếu thiết kế, tài liệu theo mẫu | [srs.md](#section-3); ưu tiên mẫu dự án, A/B/C/D là mẫu kèm sẵn |
 | Việc đã có skill chuyên môn của dự án | Đọc skill đó; chuyển nguồn, mode và quyết định hiện có, không setup lại |
-| Lưu hồ sơ hoặc tiếp tục nhiều phiên | [HO-SO-DU-AN.md](#section-4); dùng cấu trúc đang có trước |
-| Thiết lập môi trường dữ liệu hoặc làm sạch | [bao-mat-du-lieu.md](#section-3) |
+| Cần lấy nguồn hoặc tạo/sửa đầu ra qua công cụ, connector; thiếu kết nối hoặc quyền | [ket-noi.md](#section-2) — chọn theo khả năng thực có, kiểm kết quả thao tác |
+| Lưu hồ sơ hoặc tiếp tục nhiều phiên | [HO-SO-DU-AN.md](#section-5); dùng cấu trúc đang có trước |
+| Thiết lập môi trường dữ liệu hoặc làm sạch | [bao-mat-du-lieu.md](#section-4) |
 | Được giao tạo/sửa skill hoặc tư vấn đóng gói cách làm | [tao-skill.md](../skills/ba-advisor/references/tao-skill.md) |
 
 Nhiều đầu ra: chọn thứ tự theo phụ thuộc, nguồn/mẫu, người nhận và công cụ thực có. SRS, prototype, Figma, testcase chỉ vào kế hoạch khi phục vụ đầu ra được giao. BMAD là lựa chọn khi độ phức tạp thật sự cần, không phải đường bắt buộc. Skill chuyên môn hướng dẫn cách làm; công cụ mới thực hiện thao tác. Không có công cụ/quyền thì giao phần có thể làm và prompt chuyển tiếp khi hữu ích; không giả đã thực hiện.
+
+Khi dùng qua plugin, BA Setup chỉ phục vụ cài lần đầu hoặc thay đổi môi trường/dự án theo yêu cầu. Việc thường ngày đi thẳng vào Advisor; không chạy lại setup, không ép kiểm toàn bộ kết nối. Cài plugin không tự kết nối tài khoản, tăng quyền hoặc cho phép đưa dữ liệu thật ra ngoài.
 
 ## 5. Dữ liệu dự án
 
@@ -148,6 +151,44 @@ Không gửi dữ liệu thật ra môi trường chưa được xác nhận. Kh
 ---
 
 <a id="section-2"></a>
+
+# Dùng công cụ và kết nối đúng việc
+
+Đọc khi cần truy cập nguồn hoặc thao tác trên đầu ra qua công cụ. Áp dụng cùng phạm vi, mode, nguồn và điều kiện dữ liệu trong SKILL.md; không tạo vòng hỏi riêng.
+
+## Từ việc cần làm tới khả năng thực có
+
+1. Xác định thao tác cần cho **đầu ra đã giao**: đọc tài liệu, tìm nguồn, sửa tệp, dựng hình, chỉnh thiết kế hoặc kiểm kết quả. Một câu trả lời từ nguồn đã đủ không cần gọi connector.
+2. Tìm skill/công cụ liên quan trong danh sách thực sự được host cung cấp; chỉ khám phá nhóm khả năng cần dùng. Ưu tiên kết nối đang có. Đọc hướng dẫn của skill chuyên môn trước thao tác khi công cụ yêu cầu.
+3. Kiểm dữ liệu được phép dùng trước truy cập; rồi dùng thao tác đọc hẹp nhất vào đúng tài liệu/vị trí để xác định có quyền và đúng nguồn. Công cụ hiện tên chưa chứng minh đã đăng nhập; đọc được chưa chứng minh ghi được.
+4. Thực hiện phần đã được giao và đủ điều kiện. Không hỏi lại quyền sửa đã rõ trong yêu cầu; link tham khảo, quyền đọc hoặc việc cài plugin không phải yêu cầu sửa. Không tự gửi tin, công khai, cài dịch vụ hoặc tăng quyền chỉ để hoàn thành nhanh.
+5. Đối chiếu kết quả theo khả năng công cụ: mở lại đúng tệp/vị trí/phiên bản, xem thay đổi hoặc ảnh nếu liên quan. Nêu rõ phần đã tạo, đã đối chiếu và chưa thử. Không gọi “đã đồng bộ” khi mới có bảng liên kết.
+
+| Việc cần | Khả năng tìm trong môi trường | Nếu thiếu |
+|---|---|---|
+| Lấy nguồn được phép dùng | Đọc tệp đính kèm/local hoặc connector tài liệu | Xin bản được phép đọc hoặc làm phần đã có nguồn |
+| Hoàn thiện đặc tả | Skill tài liệu/SRS, công cụ ghi đúng định dạng | Soạn nội dung hoàn chỉnh trong chat, nói rõ chưa có tệp |
+| Đối chiếu/chỉnh Figma | Skill thiết kế và công cụ đọc/ghi Figma tương ứng | Giao UI spec/prompt chuyển tiếp nếu hữu ích; không giả đã tạo node |
+| Kiểm prototype | Công cụ chạy/mở trình duyệt và kiểm hành vi | Phân biệt rà nội dung với thử thao tác thật |
+| Tiếp tục công việc | Hồ sơ và bản hiện hành đúng task | Hỏi vị trí/bản còn thiếu; không lấy dữ liệu từ task khác |
+
+Tên dịch vụ ở bảng là ví dụ, không phải phụ thuộc cần cài. Không gọi tên hàm hoặc tham số từ trí nhớ nếu host chưa cung cấp mô tả.
+
+## Thiếu kết nối, quyền hoặc nguồn
+
+- Thiếu công cụ: nói ngắn **cần khả năng gì → phần nào bị chặn → cách làm được ngay**. Nếu có công cụ tìm plugin của host, tìm đúng khả năng rồi đề xuất lựa chọn cần thiết; chỉ cài khi được giao. Không gửi dữ liệu dự án vào truy vấn tìm plugin.
+- Chưa đăng nhập/thiếu quyền: hướng dẫn BA kết nối hoặc cấp đúng quyền bằng giao diện của nền tảng. Không xin mật khẩu/token trong chat; không đổi cấu hình quyền thay BA khi chưa được giao. Không dùng đường khác để vượt hạn chế của nguồn.
+- Nhiều bản: dùng chỉ mục/phiên bản đã xác nhận; mâu thuẫn cốt lõi thì hỏi trước phần phụ thuộc. Không chọn “mới nhất” chỉ theo ngày sửa.
+- Lỗi ghi/timeout: kiểm xem thay đổi đã xảy ra trước khi thử lại, tránh tạo trùng. Không lặp lại khi điều kiện không đổi. Phần độc lập tiếp tục trong phạm vi giao.
+- Quy định hiện tại yêu cầu dữ liệu dự án thật xử lý hoàn toàn local: connector đám mây vẫn không được dùng để gửi/đọc dữ liệu thật vào môi trường AI ngoài phạm vi đó. Kết nối có sẵn không làm mất điều kiện này. Dữ liệu giả/công khai/đã làm sạch được phép dùng theo yêu cầu; không ép setup bảo mật lại.
+
+## Lưu vừa đủ để lần sau dùng tiếp
+
+Trong ghi chú task đã có, lưu đường dẫn nguồn/đầu ra, phiên bản, thao tác đã kiểm và phần thiếu. Không lưu credential hoặc bản sao dữ liệu không cần thiết. Có thể ghi kết nối đã dùng và ngày kiểm; lần sau kiểm lại thao tác cần thiết, không coi trạng thái cũ là quyền còn hiệu lực. Không tạo thêm sổ kết nối cho mỗi task.
+
+---
+
+<a id="section-3"></a>
 
 # Phần chuyên môn: SRS, URD, luồng, bản mẫu và tài liệu theo mẫu
 
@@ -263,7 +304,7 @@ Soạn nội dung theo đúng heading, bảng, đánh số của mẫu, rồi ch
 
 ---
 
-<a id="section-3"></a>
+<a id="section-4"></a>
 
 # Bảo mật dữ liệu dự án
 
@@ -321,7 +362,7 @@ Chép vào hồ sơ dự án tại máy có phân quyền để người phụ t
 
 ---
 
-<a id="section-4"></a>
+<a id="section-5"></a>
 
 # Hồ sơ dự án — <Tên dự án>
 
