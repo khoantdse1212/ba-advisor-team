@@ -44,6 +44,12 @@ không xóa/ghi đè bản tùy chỉnh. Kiểm tra cài thành công rồi hư�
 
 ## Repo giúp gì trong việc thật?
 
+**[Mở demo tương tác](https://khoantdse1212.github.io/ba-advisor-team/)** · [Tải HTML để mở trên máy](https://github.com/khoantdse1212/ba-advisor-team/releases/download/v3.1.0/ba-advisor-demo.html)
+
+Trong demo, bạn giao việc Khu vực, chọn mẫu trình bày, chốt mã trùng, nhập thử và tải UI spec. Đổi quy tắc để thấy hành vi và đầu ra đổi theo; dán mẫu riêng và tiêu chí để tạo prompt chuyển tiếp dùng với AI thật. Hai mẫu dựng sẵn hoạt động ngay trong trang; mẫu riêng chưa được HTML đọc hiểu hoặc áp dụng tự động.
+
+Demo chạy theo kịch bản lập trình trong trình duyệt, không gọi AI/Figma và không chứng minh chất lượng tốt hơn v3.0. Tùy chọn lưu phiên chỉ lưu trên trình duyệt khi bạn bấm; dùng dữ liệu giả để thử. Xem [phạm vi đã kiểm](evals/RESULTS-v3.1.0.md).
+
 | Bạn giao việc | Advisor giúp làm | Bạn vẫn quyết định/kiểm |
 |---|---|---|
 | “Đọc biên bản, chuẩn bị nội dung trao đổi khách hàng” | Tách điều đã thống nhất, đề nghị, việc và câu hỏi; không ép viết SRS | Ý nào thật sự được xác nhận, ai làm gì |
@@ -144,6 +150,7 @@ Chưa xác nhận thì dùng dữ liệu giả, bản đã làm sạch được 
 | `.codex-plugin/`, `.agents/plugins/` | Khai báo plugin và danh mục cài từ repo |
 | `plugins/ba-advisor-team/` | Bản cài sinh từ nguồn; chỉ chứa nội dung cần chạy, không sửa tay |
 | `chat/` | Bản gộp sinh từ nguồn, cho công cụ chỉ nhận tệp |
+| `docs/index.html` | Demo tương tác để hiểu cách làm; không nằm trong plugin hoặc hướng dẫn runtime |
 | `packages/ba-advisor.zip` | Một skill đóng gói, cùng nội dung với thư mục skill |
 | `packages/ba-advisor-team-plugin.zip` | Plugin gọn để phân phối; không gồm bộ thử, chat hoặc dữ liệu dự án |
 | `evals/` | Ca giả lập và phiếu kiểm cho người đánh giá; **không cài vào skill** |

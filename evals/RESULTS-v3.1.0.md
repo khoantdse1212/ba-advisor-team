@@ -23,6 +23,8 @@ UI spec được đối chiếu lại với nguồn sau lượt thử. Bản nh�
 
 ## Chưa kiểm chứng
 
+Demo `docs/index.html` được kiểm bằng trình duyệt trên desktop và viewport mobile 390px: bắt buộc, quá dài, ba lựa chọn mã trùng, Lưu/Hủy, đổi giới hạn, trạng thái Figma mô phỏng, chuyển mẫu câu/bảng, tải UI spec/prompt và lưu/khôi phục phiên. Prompt giữ mẫu riêng/tiêu chí nhập, không dùng mẫu để đổi nghiệp vụ; nội dung người dùng nhập được hiển thị như văn bản. Đây là kiểm phần mềm demo, **không phải lượt thử AI bổ sung hoặc phép đo hiệu quả của plugin**. Việc áp dụng mẫu tùy ý do AI thật chưa được kiểm trong bản HTML.
+
 - Nút Setup trong giao diện desktop, thiết lập ngay giữa hội thoại hoặc tự chọn plugin khi không gọi tên.
 - Đọc/ghi Figma, Drive hoặc dịch vụ thật, đăng nhập OAuth, hết hạn quyền và lỗi ghi từ connector thật. Hai lượt giả lập không thay cho thử tích hợp.
 - Nhiều BA, nhiều model, Windows, mọi nền tảng hoặc độ ổn định sau nhiều lượt. Skill riêng/chat vẫn được đóng gói nhưng plugin mới tập trung Codex.

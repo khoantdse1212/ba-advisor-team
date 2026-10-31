@@ -28,6 +28,7 @@ PUBLIC = (
     'scripts/release.py', 'tests/test_release.py',
     '.codex-plugin/plugin.json', '.agents/plugins/marketplace.json',
     'skills/ba-setup/SKILL.md', 'evals/RESULTS-v3.1.0.md',
+    'docs/index.html',
 )
 PLUGIN = 'plugins/ba-advisor-team'
 CHAT = ('chat/BA-ADVISOR-CHAT.md', 'chat/BA-SRS-CHAT.md')
@@ -227,7 +228,7 @@ def validate_sources(root):
         path = root / name
         if not path.is_file() or path.is_symlink():
             raise ValueError('Thiếu tệp công khai hoặc symlink: ' + name)
-        if path.suffix not in ('.md', '.json', '.yaml'):
+        if path.suffix not in ('.md', '.json', '.yaml', '.html'):
             continue
         text = read(root, name)
         if re.search(r'(?:/Users/|/home/|gh[pousr]_[A-Za-z0-9]{20,})', text):
@@ -263,18 +264,23 @@ def build(root, check=False):
             path.write_bytes(expected)
     archive = zip_bytes(full_files(root, outputs))
     filename = f'ba-advisor-team-v{version(root)}.zip'
+    demo = (root / 'docs/index.html').read_bytes()
     dist = root / 'dist'
     if check:
         if (dist / filename).exists() and (dist / filename).read_bytes() != archive:
             raise ValueError('Bộ đầy đủ trong dist đã cũ')
+        if (dist / 'ba-advisor-demo.html').exists() and (dist / 'ba-advisor-demo.html').read_bytes() != demo:
+            raise ValueError('Demo trong dist đã cũ')
     else:
         dist.mkdir(exist_ok=True)
         (dist / filename).write_bytes(archive)
         (dist / 'ba-advisor.zip').write_bytes(outputs['packages/ba-advisor.zip'])
         (dist / 'ba-advisor-team-plugin.zip').write_bytes(outputs['packages/ba-advisor-team-plugin.zip'])
+        (dist / 'ba-advisor-demo.html').write_bytes(demo)
         hashes = ''.join(f'{hashlib.sha256(data).hexdigest()}  {name}\n' for name, data in
                          ((filename, archive), ('ba-advisor.zip', outputs['packages/ba-advisor.zip']),
-                          ('ba-advisor-team-plugin.zip', outputs['packages/ba-advisor-team-plugin.zip'])))
+                          ('ba-advisor-team-plugin.zip', outputs['packages/ba-advisor-team-plugin.zip']),
+                          ('ba-advisor-demo.html', demo)))
         (dist / 'SHA256SUMS.txt').write_text(hashes, encoding='utf-8')
     print(f'OK v{version(root)}: nguồn, mẫu SRS, metadata, liên kết tệp, chat và ZIP. Chưa phải kiểm hành vi AI.')
 
